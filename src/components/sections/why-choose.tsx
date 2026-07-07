@@ -13,10 +13,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 12000, suffix: "+", label: "active users" },
-  { value: 4.9, label: "average rating", display: "4.9" },
-  { value: 3, suffix: "M+", label: "windows snapped / month" },
-  { value: 1, prefix: "<", suffix: "%", label: "idle CPU usage" },
+  { value: 10, label: "built-in snap layouts" },
+  { value: 100, suffix: "%", label: "local — no cloud, no tracking" },
+  { value: 1, label: "current version", display: "v1.0" },
+  { value: 1, prefix: "<", suffix: "MB", label: "download size" },
 ];
 
 const comparison = [

@@ -61,11 +61,7 @@ const jsonLd = {
     { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free" },
     { "@type": "Offer", price: "6", priceCurrency: "USD", name: "Pro" },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "312",
-  },
+  softwareVersion: siteConfig.currentVersion,
 };
 
 export default function RootLayout({
