@@ -1,0 +1,54 @@
+---
+title: "How JgDo tracks another app's window drag without a native API"
+description: "macOS has no callback for 'a window from a different app is being dragged.' Here's the polling and classification approach we landed on."
+date: "2026-04-11"
+category: "Engineering"
+author: "Daniel Osei"
+authorRole: "Staff Engineer"
+tags: ["engineering", "macos", "accessibility-api"]
+---
+
+`⌘`-drag snapping needs to know, in real time, that *some other app's* window is being moved or resized — not JgDo's own UI. macOS gives you `NSWindowDelegate` callbacks for your own windows, but nothing equivalent for windows owned by other processes.
+
+## The building blocks
+
+JgDo combines two low-level pieces:
+
+1. A **global, listen-only `CGEventTap`** for `leftMouseDown` / `leftMouseDragged` / `leftMouseUp` and `flagsChanged` — enough to know a drag gesture is happening and whether `⌘` is held, without ever needing to intercept or consume the event.
+2. **Accessibility (AX) polling** on the window under the cursor at `mouseDown`, since there's no `AXObserver` notification for "frame is changing" that fires reliably enough for smooth, live tracking.
+
+Neither piece alone is enough — the event tap tells you *that* something is happening, and AX polling tells you *what changed* about a specific window.
+
+## Move vs. resize
+
+The trickier part turned out to be classification: is this drag moving the window, or resizing it? We compare the AX frame against a baseline captured at `mouseDown`:
+
+- A **size** change (even if the origin also shifted, like dragging a top-left corner) is a resize.
+- An **origin-only** change is a move.
+
+The first version used the same ~1.5pt tolerance for both comparisons, which caused a subtle bug: a couple of points of harmless AX settling jitter right as a title-bar drag *began* would get misread as a resize — and because classification only happens once per gesture, the entire move-mode picker UI would silently never run for that drag. The fix was an asymmetric threshold: origin tolerance stays tight at ~1.5pt, but size has to move more than ~6pt before we commit to "resize."
+
+```swift
+func classify(current: CGRect, baseline: CGRect) -> DragKind {
+    let sizeDelta = abs(current.width - baseline.width)
+        + abs(current.height - baseline.height)
+    let originDelta = abs(current.origin.x - baseline.origin.x)
+        + abs(current.origin.y - baseline.origin.y)
+
+    // Asymmetric thresholds: size needs a real, deliberate change,
+    // origin just needs to clear AX settling jitter.
+    if sizeDelta > 6 { return .resize }
+    if originDelta > 1.5 { return .move }
+    return .unclassified
+}
+```
+
+## Keeping it cheap
+
+Early builds re-fetched the full window list — including icon lookups — on every drag tick, which was visibly janky. The fix was mundane but effective: resolve the dragged window's AX element and its neighbors *once* per gesture and cache them, and add a lighter `fetchWindowBounds()` that skips icon lookups entirely for the hot path.
+
+We also learned that disabling a SwiftUI animation on a value doesn't fix lag caused by expensive *rendering*. The ghost-preview overlay originally used a real-time backdrop blur (`.glassEffect()`), which is fine for a brief one-off flash but far too costly to recompute on every ~16ms drag tick. Continuous drag-tracking now falls back to a flat tinted fill with a cheaper shadow, while the discrete "snap landed" flash keeps the full glass treatment.
+
+## Why this approach
+
+There's no shortcut here — macOS genuinely doesn't expose "another app's window is being dragged" as an event. Combining a passive event tap (for *when*) with targeted AX reads (for *what*) is the closest thing to that missing API, and keeping both paths cheap is what makes it feel instant instead of laggy.

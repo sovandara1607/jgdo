@@ -1,0 +1,33 @@
+---
+title: "Introducing the Command Palette"
+description: "A Spotlight-style, window-level switcher with live thumbnails — jump to any window across every open app in under a second."
+date: "2026-07-02"
+category: "Product Updates"
+author: "Sovandara Rith"
+authorRole: "Founder, JgDo"
+tags: ["command-palette", "release", "productivity"]
+---
+
+Most switchers work at the app level: ⌘-Tab cycles through applications, and if an app has six windows open, you're on your own. That's fine until you're the kind of person who keeps a dozen editor windows, three terminals, and a browser with forty tabs open at once.
+
+JgDo 2.4.0 ships the **Command Palette** (`⌘⌥Space`) — a second, additive switcher that works at the window level instead.
+
+## What it does
+
+Open the palette and you'll see every app you have running, collapsed into single summary rows — except the app that currently has keyboard focus, which expands inline into one row per window, complete with a live thumbnail.
+
+- **Fuzzy search** across window titles, not just app names
+- **Live thumbnails** so you recognize a window on sight instead of reading titles
+- **Keyboard-first navigation** — arrow keys move through the flattened list and wrap across app boundaries automatically
+
+## Why a second switcher
+
+We already had the App Switcher HUD (`⌥Space`), and plenty of people are happy staying at the app level. The Command Palette isn't a replacement — it's for the moments when you know roughly what you're looking for but not which app it's in.
+
+## How the thumbnails work
+
+Live previews are powered by ScreenCaptureKit's one-shot screenshot API, gated behind the Screen Recording permission. Nothing is streamed or recorded continuously — a thumbnail is captured only when you open the palette, and only for the windows currently visible in it. If you haven't granted Screen Recording access yet, JgDo falls back to the app icon instead of blocking the feature entirely.
+
+## Try it
+
+Update to 2.4.0 from the [download page](/download) and hit `⌘⌥Space`. If you remap your shortcuts, the palette rides the same recorder UI as everything else in Settings → Shortcuts.

@@ -1,0 +1,42 @@
+import type { AppRelease } from "@/types";
+
+/**
+ * Single source of truth for releases. The Download and Changelog pages both
+ * read from this file, so shipping a new build means updating one array.
+ * `assets[].sha256` is the real digest of the file in `public/downloads/` —
+ * regenerate it (`shasum -a 256 <file>`) any time that file changes.
+ */
+export const releases: AppRelease[] = [
+  {
+    version: "1.0",
+    date: "2026-07-07",
+    latest: true,
+    highlights: [
+      "First real build: window snapping, the Command Palette, clipboard manager, and workspaces all in one menu bar app",
+      "Apple Silicon only for now — Intel and a notarized, Developer ID–signed build are on the way",
+    ],
+    features: [
+      "Window snapping: 10 built-in layouts, ⌘-drag to snap into any available space, ⌘-resize to push neighboring windows",
+      "App switcher HUD (⌥Space) and Command Palette (⌘⌥Space) with live window thumbnails",
+      "Clipboard history with pin/favorite and paste-in-place",
+      "Workspaces: save a window arrangement and restore it later, launching missing apps automatically",
+      "Status popover: Overview / System / Workspace tabs with live CPU, memory, disk, and network",
+      "Keyboard cleaning mode, volume/brightness controls, and fully remappable shortcuts",
+    ],
+    improvements: [],
+    fixes: [],
+    assets: [
+      {
+        platform: "macos",
+        label: "macOS",
+        arch: "Apple Silicon",
+        fileName: "JgDo-1.0-arm64.zip",
+        href: "/downloads/JgDo-1.0-arm64.zip",
+        sizeMb: 0.97,
+        sha256: "333788659932e31ca7b5f5cbc93087d07d194021dd1dc69a7fc1ad035ecb4efb",
+      },
+    ],
+  },
+];
+
+export const latestRelease = releases.find((r) => r.latest) ?? releases[0];
