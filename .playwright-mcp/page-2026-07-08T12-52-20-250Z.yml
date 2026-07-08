@@ -1,0 +1,326 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "JgDo home" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e7]:
+            - img [ref=e9]
+            - generic [ref=e11]: JgDo
+        - navigation [ref=e12]:
+          - link "Features" [ref=e13] [cursor=pointer]:
+            - /url: /features
+          - link "Pricing" [ref=e14] [cursor=pointer]:
+            - /url: /pricing
+          - link "Changelog" [ref=e15] [cursor=pointer]:
+            - /url: /changelog
+          - link "Blog" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "Support" [ref=e17] [cursor=pointer]:
+            - /url: /support
+        - generic [ref=e18]:
+          - button "Switch to dark theme" [ref=e19]:
+            - img [ref=e20]
+          - link "Download free" [ref=e27] [cursor=pointer]:
+            - /url: /download
+    - main [ref=e28]:
+      - heading "finally organized." [level=1] [ref=e32]
+      - generic [ref=e36]:
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Everything you need
+          - heading "One menu bar app, a dozen habits fixed" [level=2] [ref=e39]
+          - paragraph [ref=e40]: JgDo replaces window dragging, blind ⌘-Tab cycling, and a scattered clipboard with a handful of shortcuts you'll actually remember.
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - img [ref=e44]
+            - heading "Instant window snapping" [level=3] [ref=e49]
+            - paragraph [ref=e50]: Ten built-in layouts and edge-to-edge snapping put any window exactly where you want it, without touching the mouse.
+            - list [ref=e51]:
+              - listitem [ref=e52]:
+                - img [ref=e53]
+                - generic [ref=e55]: Halves, thirds, corners, and full-screen presets out of the box
+              - listitem [ref=e56]:
+                - img [ref=e57]
+                - generic [ref=e59]: Cycle the same shortcut through multiple sizes — 50%, 66%, 33%
+              - listitem [ref=e60]:
+                - img [ref=e61]
+                - generic [ref=e63]: Ghost preview shows the target rect before you commit
+          - generic [ref=e64]:
+            - img [ref=e66]
+            - heading "⌘-drag to snap anywhere" [level=3] [ref=e68]
+            - paragraph [ref=e69]: Hold ⌘ while dragging a window and JgDo finds the available space around your other windows — no grid required.
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - img [ref=e72]
+                - generic [ref=e74]: Works with any window arrangement, not just fixed halves
+              - listitem [ref=e75]:
+                - img [ref=e76]
+                - generic [ref=e78]: A searchable picker lets you target a specific window to snap beside
+              - listitem [ref=e79]:
+                - img [ref=e80]
+                - generic [ref=e82]: Smooth, spring-animated preview tracks your cursor in real time
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - heading "⌘-resize pushes neighbors" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Resize one window and its neighbors resize with it, so your layout stays tidy instead of overlapping.
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - img [ref=e91]
+                - generic [ref=e93]: Detects edge-adjacent windows automatically
+              - listitem [ref=e94]:
+                - img [ref=e95]
+                - generic [ref=e97]: Keeps a sensible minimum size for every window involved
+              - listitem [ref=e98]:
+                - img [ref=e99]
+                - generic [ref=e101]: Feels like resizing panes in a tiling window manager
+          - generic [ref=e102]:
+            - img [ref=e104]
+            - heading "Dual-app tiling" [level=3] [ref=e106]
+            - paragraph [ref=e107]: One shortcut snaps your active window and automatically tiles the next window beside it.
+            - list [ref=e108]:
+              - listitem [ref=e109]:
+                - img [ref=e110]
+                - generic [ref=e112]: Instant side-by-side setup for any two apps
+              - listitem [ref=e113]:
+                - img [ref=e114]
+                - generic [ref=e116]: Built-in multi-window layouts for coding, writing, and research
+              - listitem [ref=e117]:
+                - img [ref=e118]
+                - generic [ref=e120]: No manual dragging required for common pairings
+          - generic [ref=e121]:
+            - img [ref=e123]
+            - heading "App switcher HUD" [level=3] [ref=e125]
+            - paragraph [ref=e126]: A searchable, on-screen switcher (⌥Space) replaces blind ⌘-Tab cycling with something you can actually see.
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - img [ref=e129]
+                - generic [ref=e131]: Type to filter instead of cycling one app at a time
+              - listitem [ref=e132]:
+                - img [ref=e133]
+                - generic [ref=e135]: Arrow keys and Enter for fully keyboard-driven navigation
+              - listitem [ref=e136]:
+                - img [ref=e137]
+                - generic [ref=e139]: Picking an app can snap it side-by-side automatically
+          - generic [ref=e140]:
+            - img [ref=e142]
+            - heading "Command Palette" [level=3] [ref=e144]
+            - paragraph [ref=e145]: A Raycast-style palette (⌘⌥Space) for jumping to any window across every open app, with live thumbnails.
+            - list [ref=e146]:
+              - listitem [ref=e147]:
+                - img [ref=e148]
+                - generic [ref=e150]: Fuzzy search across every window, not just app names
+              - listitem [ref=e151]:
+                - img [ref=e152]
+                - generic [ref=e154]: Live thumbnails so you recognize windows at a glance
+              - listitem [ref=e155]:
+                - img [ref=e156]
+                - generic [ref=e158]: The active app expands inline while others stay tucked away
+        - link "See every feature" [ref=e161] [cursor=pointer]:
+          - /url: /features
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - paragraph [ref=e165]: See it in action
+          - heading "A closer look at the everyday workflow" [level=2] [ref=e166]
+          - paragraph [ref=e167]: Four core surfaces, one shared design language.
+        - generic [ref=e169]:
+          - generic [ref=e171]:
+            - generic [ref=e177]: Window Snapping
+            - paragraph [ref=e185]: Ten built-in layouts, plus ⌘-drag to snap into any available space.
+          - generic [ref=e186]:
+            - button "Window Snapping" [ref=e187]
+            - button "Command Palette" [ref=e188]
+            - button "Clipboard History" [ref=e189]
+            - button "Workspaces" [ref=e190]
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - paragraph [ref=e194]: Why JgDo
+          - heading "Built for how multitasking actually feels" [level=2] [ref=e195]
+          - paragraph [ref=e196]: Not another Mission Control clone — JgDo is the layer that was missing between you and a dozen open windows.
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - paragraph [ref=e199]: "0"
+            - paragraph [ref=e200]: built-in snap layouts
+          - generic [ref=e201]:
+            - paragraph [ref=e202]:
+              - generic [ref=e203]: 0%
+            - paragraph [ref=e204]: local — no cloud, no tracking
+          - generic [ref=e205]:
+            - paragraph [ref=e206]: v1.0
+            - paragraph [ref=e207]: current version
+          - generic [ref=e208]:
+            - paragraph [ref=e209]:
+              - generic [ref=e210]: <0MB
+            - paragraph [ref=e211]: download size
+        - generic [ref=e213]:
+          - generic [ref=e215]: Without JgDo
+          - generic [ref=e216]: With JgDo
+          - generic [ref=e217]:
+            - generic [ref=e218]: Arrange windows
+            - generic [ref=e219]:
+              - img [ref=e220]
+              - text: Drag every edge by hand
+            - generic [ref=e223]:
+              - img [ref=e224]
+              - text: One shortcut, every time
+          - generic [ref=e226]:
+            - generic [ref=e227]: Find a window
+            - generic [ref=e228]:
+              - img [ref=e229]
+              - text: Blind ⌘-Tab cycling
+            - generic [ref=e232]:
+              - img [ref=e233]
+              - text: Search with live thumbnails
+          - generic [ref=e235]:
+            - generic [ref=e236]: Reuse a setup
+            - generic [ref=e237]:
+              - img [ref=e238]
+              - text: Rebuild it from scratch
+            - generic [ref=e241]:
+              - img [ref=e242]
+              - text: Restore a saved workspace
+          - generic [ref=e244]:
+            - generic [ref=e245]: Old clipboard items
+            - generic [ref=e246]:
+              - img [ref=e247]
+              - text: Gone the moment you copy again
+            - generic [ref=e250]:
+              - img [ref=e251]
+              - text: Searchable history, pinned favorites
+      - generic [ref=e255]:
+        - paragraph [ref=e256]: Why I built this
+        - paragraph [ref=e257]: "I'm a CS student who always ends up with a dozen windows open — an editor, a terminal, browser tabs for research, Figma for whatever I'm designing that week. I got tired of dragging windows into place by hand and switching apps blind with ⌘-Tab, so I built the tool I actually wanted: the snapping of Magnet, the searchable switching of Raycast, and the quiet menu-bar presence of OneMenu, combined into one small app."
+        - paragraph [ref=e258]: JgDo is what I use every day now. It's brand new — just launched — so if you run into rough edges, that's on me, not you.
+        - generic [ref=e259]:
+          - generic [ref=e260]: SR
+          - generic [ref=e261]:
+            - paragraph [ref=e262]: Sovandara Rith
+            - paragraph [ref=e263]: Creator of JgDo
+      - generic [ref=e265]:
+        - generic [ref=e266]:
+          - paragraph [ref=e267]: FAQ
+          - heading "Questions, answered" [level=2] [ref=e268]
+        - generic [ref=e270]:
+          - generic [ref=e271]:
+            - button "What is JgDo?" [expanded] [ref=e272]:
+              - generic [ref=e273]: What is JgDo?
+              - img [ref=e275]
+            - paragraph [ref=e277]: "JgDo is a lightweight macOS menu bar app for window management: instant snapping, a searchable app switcher and command palette, a clipboard manager, and saved workspaces — all driven by shortcuts you control."
+          - button "Which macOS versions are supported?" [ref=e279]:
+            - generic [ref=e280]: Which macOS versions are supported?
+            - img [ref=e282]
+          - button "Does JgDo need Accessibility or Screen Recording permissions?" [ref=e284]:
+            - generic [ref=e285]: Does JgDo need Accessibility or Screen Recording permissions?
+            - img [ref=e287]
+          - button "Is JgDo available for Windows or Linux?" [ref=e289]:
+            - generic [ref=e290]: Is JgDo available for Windows or Linux?
+            - img [ref=e292]
+          - button "Will JgDo slow down my Mac?" [ref=e294]:
+            - generic [ref=e295]: Will JgDo slow down my Mac?
+            - img [ref=e297]
+          - button "Can I customize every shortcut?" [ref=e299]:
+            - generic [ref=e300]: Can I customize every shortcut?
+            - img [ref=e302]
+      - generic [ref=e305]:
+        - img [ref=e307]
+        - heading "Get new features before everyone else" [level=2] [ref=e310]
+        - paragraph [ref=e311]: One email a month. Release notes, workflow tips, and the occasional early beta invite.
+        - generic [ref=e312]:
+          - generic [ref=e313]: Email address
+          - textbox "Email address Email address" [ref=e314]:
+            - /placeholder: you@example.com
+          - button "Subscribe" [ref=e315]:
+            - text: Subscribe
+            - img [ref=e316]
+      - generic [ref=e319]:
+        - heading "Stop fighting with window placement." [level=2] [ref=e320]
+        - paragraph [ref=e321]: Free to start. Takes less than a minute to install.
+        - generic [ref=e322]:
+          - link "Download for free" [ref=e324] [cursor=pointer]:
+            - /url: /download
+            - text: Download for free
+            - img [ref=e325]
+          - link "View pricing" [ref=e328] [cursor=pointer]:
+            - /url: /pricing
+    - contentinfo [ref=e329]:
+      - generic [ref=e330]:
+        - generic [ref=e331]:
+          - generic [ref=e332]:
+            - generic [ref=e333]:
+              - img [ref=e335]
+              - generic [ref=e337]: JgDo
+            - paragraph [ref=e338]: JgDo is a macOS menu bar app that snaps windows into place, switches apps instantly, and remembers your workspaces — so multitasking stops feeling like busywork.
+            - paragraph [ref=e339]: Get product updates, not spam.
+            - generic [ref=e340]:
+              - generic [ref=e341]: Email address
+              - textbox "you@example.com" [ref=e342]
+              - button "Subscribe" [ref=e343]:
+                - text: Subscribe
+                - img [ref=e344]
+            - generic [ref=e346]:
+              - link "GitHub" [ref=e347] [cursor=pointer]:
+                - /url: https://github.com/jgdo-app/jgdo
+                - img [ref=e348]
+              - link "Discord" [ref=e350] [cursor=pointer]:
+                - /url: https://discord.gg/jgdo
+                - img [ref=e351]
+              - link "Twitter / X" [ref=e353] [cursor=pointer]:
+                - /url: https://twitter.com/jgdoapp
+                - img [ref=e354]
+          - generic [ref=e356]:
+            - heading "Product" [level=3] [ref=e357]
+            - list [ref=e358]:
+              - listitem [ref=e359]:
+                - link "Features" [ref=e360] [cursor=pointer]:
+                  - /url: /features
+              - listitem [ref=e361]:
+                - link "Pricing" [ref=e362] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=e363]:
+                - link "Download" [ref=e364] [cursor=pointer]:
+                  - /url: /download
+              - listitem [ref=e365]:
+                - link "Changelog" [ref=e366] [cursor=pointer]:
+                  - /url: /changelog
+          - generic [ref=e367]:
+            - heading "Resources" [level=3] [ref=e368]
+            - list [ref=e369]:
+              - listitem [ref=e370]:
+                - link "Blog" [ref=e371] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e372]:
+                - link "Support" [ref=e373] [cursor=pointer]:
+                  - /url: /support
+              - listitem [ref=e374]:
+                - link "Documentation" [ref=e375] [cursor=pointer]:
+                  - /url: /support#docs
+              - listitem [ref=e376]:
+                - link "GitHub" [ref=e377] [cursor=pointer]:
+                  - /url: https://github.com/jgdo-app/jgdo
+          - generic [ref=e378]:
+            - heading "Company" [level=3] [ref=e379]
+            - list [ref=e380]:
+              - listitem [ref=e381]:
+                - link "Contact" [ref=e382] [cursor=pointer]:
+                  - /url: /support#contact
+              - listitem [ref=e383]:
+                - link "Discord" [ref=e384] [cursor=pointer]:
+                  - /url: https://discord.gg/jgdo
+              - listitem [ref=e385]:
+                - link "Twitter / X" [ref=e386] [cursor=pointer]:
+                  - /url: https://twitter.com/jgdoapp
+          - generic [ref=e387]:
+            - heading "Legal" [level=3] [ref=e388]
+            - list [ref=e389]:
+              - listitem [ref=e390]:
+                - link "Privacy Policy" [ref=e391] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e392]:
+                - link "Terms of Service" [ref=e393] [cursor=pointer]:
+                  - /url: /terms
+        - generic [ref=e394]:
+          - paragraph [ref=e395]: © 2026 JgDo. All rights reserved.
+          - paragraph [ref=e396]: Built for macOS. Crafted with care.
+      - paragraph [ref=e398]: JgDo
+  - button "Open Next.js Dev Tools" [ref=e404] [cursor=pointer]:
+    - img [ref=e405]
+  - alert [ref=e408]

@@ -40,6 +40,8 @@ export function PricingCards() {
           const priceLabel =
             price === "custom" ? "Custom" : price === 0 ? "$0" : `$${price}`;
           const period = price === "custom" || price === 0 ? "" : yearly ? "/yr" : "/mo";
+          const href =
+            tier.id === "pro" ? `/checkout?period=${yearly ? "yearly" : "monthly"}` : tier.href;
 
           return (
             <StaggerItem
@@ -65,7 +67,7 @@ export function PricingCards() {
                 <span className="text-sm text-muted-foreground">{period}</span>
               </div>
               <Button
-                href={tier.href}
+                href={href}
                 variant={tier.highlighted ? "primary" : "secondary"}
                 className="mt-6 w-full"
               >
