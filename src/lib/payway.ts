@@ -32,6 +32,8 @@ export interface BuildPurchaseParams {
   cancelUrl: string;
   continueSuccessUrl: string;
   customFields?: Record<string, string>;
+  /** cards | abapay | abapay_deeplink | wechat | alipay | bakong — mandatory per PayWay, defaults to KHQR. */
+  paymentOption?: string;
 }
 
 /**
@@ -64,7 +66,7 @@ export function buildPurchasePayload(params: BuildPurchaseParams) {
     email: params.email ?? "",
     phone: params.phone ?? "",
     type: "purchase",
-    payment_option: "",
+    payment_option: params.paymentOption ?? "abapay",
     return_url: Buffer.from(params.returnUrl).toString("base64"),
     cancel_url: params.cancelUrl,
     continue_success_url: params.continueSuccessUrl,
@@ -216,9 +218,10 @@ export async function checkTransaction(tranId: string): Promise<CheckTransaction
 
   const data = await res.json();
 
+  // `status` is a top-level sibling of `data`, not nested inside it.
   return {
-    statusCode: data.data?.status?.code,
-    statusMessage: data.data?.status?.message,
+    statusCode: data.status?.code,
+    statusMessage: data.status?.message,
     paymentStatusCode: data.data?.payment_status_code,
     paymentStatus: data.data?.payment_status,
   };
