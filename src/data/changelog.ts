@@ -33,7 +33,8 @@ export const releases: AppRelease[] = [
         fileName: "JgDo-1.0-arm64.zip",
         href: "/downloads/JgDo-1.0-arm64.zip",
         sizeMb: 0.97,
-        sha256: "333788659932e31ca7b5f5cbc93087d07d194021dd1dc69a7fc1ad035ecb4efb",
+        sha256:
+          "333788659932e31ca7b5f5cbc93087d07d194021dd1dc69a7fc1ad035ecb4efb",
       },
     ],
   },
