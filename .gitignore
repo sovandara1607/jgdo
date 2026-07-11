@@ -43,3 +43,6 @@ next-env.d.ts
 
 # raw screen recordings (too large for GitHub; keep only the compressed output in public/video-demo)
 *.mov
+
+# playwright MCP debug output
+/.playwright-mcp/
