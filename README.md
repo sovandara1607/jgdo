@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JgDo Website
 
-## Getting Started
+Marketing site, blog, and checkout flow for [JgDo](https://jgdo.app) — a macOS menu bar app for window snapping, app switching, and workspaces. Built with Next.js 16 (App Router), React 19, and Tailwind CSS 4.
 
-First, run the development server:
+## Getting started
+
+Requires Node >= 20.9 (see `.nvmrc`).
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Checkout is powered by [ABA PayWay](https://developer.payway.com.kh). Copy `.env.example` to `.env.local` and fill in your merchant credentials:
 
-## Learn More
+```bash
+cp .env.example .env.local
+```
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Description |
+| --- | --- |
+| `PAYWAY_MERCHANT_ID` | Merchant ID from your PayWay registration email |
+| `PAYWAY_API_KEY` | API key from your PayWay registration email |
+| `PAYWAY_BASE_URL` | `https://checkout-sandbox.payway.com.kh` for sandbox, `https://checkout.payway.com.kh` for production |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/            Routes (App Router): pricing, checkout, download, blog, changelog, support
+src/app/api/        Route handlers: contact, newsletter, checkout, payway webhook/callback
+src/components/     UI, layout (navbar/footer), sections, blog, mockups, icons
+src/data/           Site-wide config, pricing, FAQs, changelog entries
+content/blog/       MDX blog posts, rendered via next-mdx-remote
+public/downloads/   Distributable app builds (.dmg)
+```
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev      # start the dev server
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint     # run ESLint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes for contributors
+
+This project pins `next@16.2.10`, which has breaking changes from earlier Next.js versions you may be used to. Check `node_modules/next/dist/docs/` before relying on prior Next.js knowledge, and heed any deprecation notices from the framework.
