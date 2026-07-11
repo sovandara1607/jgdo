@@ -34,7 +34,7 @@ export const releases: AppRelease[] = [
         href: "/downloads/JgDo-0.1.1-arm64.dmg",
         sizeMb: 1.26,
         sha256:
-          "6e5eb7cad36e9f45ed43ad6d1f8afd493504336d8bf8f1fb004e2511fbb3da1f",
+          "cdeea19825d6101c83ca7882eedbaa5444c5edabdded2712f9a509fa30b2fe1a",
       },
     ],
   },
