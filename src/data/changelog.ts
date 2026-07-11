@@ -32,9 +32,9 @@ export const releases: AppRelease[] = [
         arch: "Apple Silicon",
         fileName: "JgDo-0.1.1-arm64.dmg",
         href: "/downloads/JgDo-0.1.1-arm64.dmg",
-        sizeMb: 1.32,
+        sizeMb: 1.26,
         sha256:
-          "22d956b5dbb60598f0f1c96bdb8a8aafc7ad24e5987a2e254b0431a8cbde5ae4",
+          "6e5eb7cad36e9f45ed43ad6d1f8afd493504336d8bf8f1fb004e2511fbb3da1f",
       },
     ],
   },
