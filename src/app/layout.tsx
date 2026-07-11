@@ -59,7 +59,8 @@ const jsonLd = {
   url: siteConfig.url,
   offers: [
     { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free" },
-    { "@type": "Offer", price: "6", priceCurrency: "USD", name: "Pro" },
+    { "@type": "Offer", price: "1.99", priceCurrency: "USD", name: "Pro" },
+    { "@type": "Offer", price: "2.50", priceCurrency: "USD", name: "Pro+" },
   ],
   softwareVersion: siteConfig.currentVersion,
 };

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-type Period = "monthly" | "yearly";
+type Plan = "pro" | "pro-plus";
 type Status = "loading" | "ready" | "error";
 
 interface CheckoutData {
@@ -16,7 +16,7 @@ interface CheckoutData {
 const POLL_INTERVAL_MS = 3000;
 const POLL_TIMEOUT_MS = 5 * 60 * 1000;
 
-export function CheckoutForm({ period }: { period: Period }) {
+export function CheckoutForm({ plan }: { plan: Plan }) {
   const router = useRouter();
   const [status, setStatus] = useState<Status>("loading");
   const [data, setData] = useState<CheckoutData | null>(null);
@@ -29,7 +29,7 @@ export function CheckoutForm({ period }: { period: Period }) {
     fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ period }),
+      body: JSON.stringify({ plan }),
     })
       .then((res) => {
         if (!res.ok) throw new Error("checkout request failed");
@@ -48,7 +48,7 @@ export function CheckoutForm({ period }: { period: Period }) {
     return () => {
       cancelled = true;
     };
-  }, [period]);
+  }, [plan]);
 
   useEffect(() => {
     if (status !== "ready" || !data) return;
@@ -87,7 +87,7 @@ export function CheckoutForm({ period }: { period: Period }) {
         <p className="mt-2 text-muted-foreground">
           Something went wrong reaching the payment provider. Please try again.
         </p>
-        <Button href={`/checkout?period=${period}`} className="mt-6">
+        <Button href={`/checkout?plan=${plan}`} className="mt-6">
           Retry
         </Button>
       </div>
@@ -127,7 +127,7 @@ export function CheckoutForm({ period }: { period: Period }) {
         <p className="mt-4 text-sm text-muted-foreground">
           Still waiting for payment. If you&apos;ve already paid, this can take a minute to
           confirm — otherwise{" "}
-          <a href={`/checkout?period=${period}`} className="underline">
+          <a href={`/checkout?plan=${plan}`} className="underline">
             start a new payment
           </a>
           .

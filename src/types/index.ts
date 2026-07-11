@@ -55,10 +55,7 @@ export interface FAQItem {
 export interface PricingTier {
   id: string;
   name: string;
-  price: {
-    monthly: number | "custom";
-    yearly: number | "custom";
-  };
+  price: number;
   description: string;
   cta: string;
   href: string;
@@ -70,7 +67,7 @@ export interface PricingFeatureRow {
   label: string;
   free: string | boolean;
   pro: string | boolean;
-  enterprise: string | boolean;
+  proPlus: string | boolean;
 }
 
 export interface BlogFrontmatter {

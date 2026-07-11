@@ -37,21 +37,21 @@ export const pricingFaqs: FAQItem[] = [
   {
     question: "Can I try Pro before paying?",
     answer:
-      "Yes. Every Pro feature is unlocked for 14 days after install, no credit card required. You'll drop back to the Free tier automatically if you don't upgrade.",
+      "Yes. Every Pro feature is unlocked for 14 days after install, no credit card required. You'll drop back to the Free tier automatically if you don't buy a license.",
   },
   {
-    question: "What happens to my data if I downgrade?",
+    question: "Is this a subscription?",
     answer:
-      "Nothing is deleted. Workspaces and clipboard history beyond the Free tier's limits are kept locally but paused until you upgrade again.",
+      "No. Pro and Pro+ are both one-time purchases — pay once and keep the features for good, no renewals.",
+  },
+  {
+    question: "What's the difference between Pro and Pro+?",
+    answer:
+      "Pro+ unlocks everything in Pro plus lifetime free updates and early access to new features — it's also a small way to support ongoing development.",
   },
   {
     question: "Do you offer team or education discounts?",
     answer:
       "Yes — reach out at hello@jgdo.app with your team size or .edu email and we'll get you a discount code.",
-  },
-  {
-    question: "Is there a one-time purchase option?",
-    answer:
-      "Pro is available as an annual subscription or a one-time lifetime license. The lifetime option is shown at checkout when you select Pro.",
   },
 ];

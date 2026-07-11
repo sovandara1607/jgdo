@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/site";
 import { pricingTiers } from "@/data/pricing";
 
 const schema = z.object({
-  period: z.enum(["monthly", "yearly"]),
+  plan: z.enum(["pro", "pro-plus"]),
 });
 
 export async function POST(request: Request) {
@@ -17,13 +17,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid checkout request." }, { status: 400 });
   }
 
-  const pro = pricingTiers.find((tier) => tier.id === "pro");
-  const amount = pro?.price[parsed.data.period];
-  if (typeof amount !== "number" || amount <= 0) {
+  const tier = pricingTiers.find((tier) => tier.id === parsed.data.plan);
+  const amount = tier?.price;
+  if (!tier || typeof amount !== "number" || amount <= 0) {
     return NextResponse.json({ error: "That plan isn't purchasable." }, { status: 400 });
   }
 
-  const tranId = `pro-${Date.now().toString(36)}-${randomUUID().slice(0, 6)}`;
+  const tranId = `${parsed.data.plan}-${Date.now().toString(36)}-${randomUUID().slice(0, 6)}`;
 
   const result = await createTransaction({
     tranId,
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     currency: "USD",
     items: [
       {
-        name: `JgDo Pro (${parsed.data.period === "yearly" ? "Yearly" : "Monthly"})`,
+        name: `JgDo ${tier.name}`,
         quantity: 1,
         price: amount,
       },
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     returnUrl: `${siteConfig.url}/api/payway/callback`,
     cancelUrl: `${siteConfig.url}/checkout/cancel`,
     continueSuccessUrl: `${siteConfig.url}/checkout/success`,
-    customFields: { plan: "pro", period: parsed.data.period },
+    customFields: { plan: parsed.data.plan },
   });
 
   if (result.status?.code !== "00") {

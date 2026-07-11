@@ -11,7 +11,7 @@ import { pricingFaqs } from "@/data/faqs";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple pricing for JgDo: a generous Free tier, Pro for power users, and Enterprise for teams.",
+    "Simple pricing for JgDo: a generous Free tier, Pro for power users, and Pro+ to back development — all one-time purchases.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -36,7 +36,7 @@ export default function PricingPage() {
               Simple pricing, <span className="emphasis">no surprises</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Start free. Upgrade only when you&apos;re sure. Cancel any time from Settings.
+              Start free. Upgrade whenever you&apos;re sure — Pro and Pro+ are one-time purchases, not subscriptions.
             </p>
           </Reveal>
         </Container>
@@ -74,7 +74,7 @@ export default function PricingPage() {
                       {renderCell(row.pro)}
                     </td>
                     <td className="px-6 py-4 text-center text-muted-foreground">
-                      {renderCell(row.enterprise)}
+                      {renderCell(row.proPlus)}
                     </td>
                   </tr>
                 ))}

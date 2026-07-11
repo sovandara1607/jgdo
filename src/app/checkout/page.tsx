@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type Period = "monthly" | "yearly";
+type Plan = "pro" | "pro-plus";
 
-function parsePeriod(value: string | string[] | undefined): Period | null {
-  if (value === "monthly" || value === "yearly") return value;
+function parsePlan(value: string | string[] | undefined): Plan | null {
+  if (value === "pro" || value === "pro-plus") return value;
   return null;
 }
 
@@ -20,13 +20,13 @@ export default async function CheckoutPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const period = parsePeriod((await searchParams).period);
-  if (!period) notFound();
+  const plan = parsePlan((await searchParams).plan);
+  if (!plan) notFound();
 
   return (
     <section className="pb-24 pt-16 sm:pt-20">
       <Container className="mx-auto max-w-md text-center">
-        <CheckoutForm period={period} />
+        <CheckoutForm plan={plan} />
       </Container>
     </section>
   );
