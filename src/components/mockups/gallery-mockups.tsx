@@ -53,7 +53,7 @@ export function PaletteGalleryMockup() {
 
 export function ClipboardGalleryMockup() {
   const items = [
-    { text: "https://jgdo.app/download", pinned: true },
+    { text: "https://jgdo.sovandara.lol/download", pinned: true },
     { text: "Q3 roadmap notes.pdf", pinned: false },
     { text: "npm run build --turbopack", pinned: false },
   ];
