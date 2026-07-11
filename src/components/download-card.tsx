@@ -1,6 +1,7 @@
 import { Apple, Download } from "lucide-react";
 import { GithubIcon } from "@/components/icons/brand-icons";
 import { Button } from "@/components/ui/button";
+import { CopyCommandRow } from "@/components/copy-command-row";
 import { siteConfig } from "@/data/site";
 import { formatBytes, formatDate } from "@/lib/utils";
 import type { AppRelease } from "@/types";
@@ -42,6 +43,14 @@ export function DownloadCard({ release }: { release: AppRelease }) {
             Download from GitHub
           </Button>
         </div>
+      </div>
+
+      <div className="mt-6 border-t border-border pt-6">
+        <p className="text-xs font-medium text-muted-foreground">Or install via Homebrew</p>
+        <CopyCommandRow
+          className="mt-2"
+          command="brew tap sovandara1607/jgdo && brew install --cask jgdo"
+        />
       </div>
     </div>
   );
