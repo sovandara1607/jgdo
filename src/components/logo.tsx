@@ -1,4 +1,4 @@
-import { AppWindow } from "lucide-react";
+import { JgdoIcon } from "@/components/icons/jgdo-icon";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/data/site";
 
@@ -17,14 +17,7 @@ export function Logo({
         className
       )}
     >
-      <span
-        className={cn(
-          "flex h-7 w-7 items-center justify-center rounded-lg",
-          inverted ? "bg-background text-foreground" : "bg-foreground text-background"
-        )}
-      >
-        <AppWindow className="h-4 w-4" strokeWidth={2.4} />
-      </span>
+      <JgdoIcon className="h-7 w-7 rounded-lg" />
       <span className="text-[17px] tracking-tight">{siteConfig.name}</span>
     </span>
   );

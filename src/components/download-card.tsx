@@ -1,5 +1,6 @@
-import { Apple, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { GithubIcon } from "@/components/icons/brand-icons";
+import { JgdoIcon } from "@/components/icons/jgdo-icon";
 import { Button } from "@/components/ui/button";
 import { CopyCommandRow } from "@/components/copy-command-row";
 import { siteConfig } from "@/data/site";
@@ -14,9 +15,7 @@ export function DownloadCard({ release }: { release: AppRelease }) {
     <div className="rounded-3xl border border-border bg-surface p-8 sm:p-10">
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-foreground text-background">
-            <Apple className="h-7 w-7" fill="currentColor" />
-          </div>
+          <JgdoIcon className="h-14 w-14 rounded-2xl" />
           <div>
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <span className="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent">
