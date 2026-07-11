@@ -1,10 +1,13 @@
 import { Apple, Download } from "lucide-react";
+import { GithubIcon } from "@/components/icons/brand-icons";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/data/site";
 import { formatBytes, formatDate } from "@/lib/utils";
 import type { AppRelease } from "@/types";
 
 export function DownloadCard({ release }: { release: AppRelease }) {
   const asset = release.assets[0];
+  const githubReleaseUrl = `${siteConfig.links.github}/releases/download/v${release.version}/${asset.fileName}`;
 
   return (
     <div className="rounded-3xl border border-border bg-surface p-8 sm:p-10">
@@ -26,9 +29,19 @@ export function DownloadCard({ release }: { release: AppRelease }) {
             <p className="text-sm text-muted-foreground">{formatBytes(asset.sizeMb)}</p>
           </div>
         </div>
-        <Button href={asset.href} size="lg" icon={<Download className="h-4 w-4" />}>
-          Download {asset.fileName}
-        </Button>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href={asset.href} size="lg" icon={<Download className="h-4 w-4" />}>
+            Download {asset.fileName}
+          </Button>
+          <Button
+            href={githubReleaseUrl}
+            variant="secondary"
+            size="lg"
+            icon={<GithubIcon className="h-4 w-4" />}
+          >
+            Download from GitHub
+          </Button>
+        </div>
       </div>
     </div>
   );
