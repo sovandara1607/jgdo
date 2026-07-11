@@ -225,6 +225,9 @@ export function CinematicHero({
         .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
         .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
 
+      const setNavbarHidden = (hidden: boolean) =>
+        window.dispatchEvent(new CustomEvent("jgdo:cinematic", { detail: { hidden } }));
+
       const scrollTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -233,6 +236,10 @@ export function CinematicHero({
           pin: true,
           scrub: 1,
           anticipatePin: 1,
+          onEnter: () => setNavbarHidden(true),
+          onEnterBack: () => setNavbarHidden(true),
+          onLeave: () => setNavbarHidden(false),
+          onLeaveBack: () => setNavbarHidden(false),
         },
       });
 
@@ -268,7 +275,10 @@ export function CinematicHero({
 
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      window.dispatchEvent(new CustomEvent("jgdo:cinematic", { detail: { hidden: false } }));
+    };
   },[]);
 
   return (

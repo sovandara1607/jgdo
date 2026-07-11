@@ -16,6 +16,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [cinematicHidden, setCinematicHidden] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -28,12 +29,26 @@ export function Navbar() {
     // Close the mobile menu on route change (pathname is an external signal from the router).
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
+    // A cinematic section on the previous page may have hidden the navbar; reset on navigation.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCinematicHidden(false);
   }, [pathname]);
+
+  useEffect(() => {
+    // Dispatched by full-bleed scroll-pinned sections (e.g. the homepage cinematic hero)
+    // while they cover the same screen area the sticky navbar occupies.
+    const onCinematic = (e: Event) => {
+      setCinematicHidden((e as CustomEvent<{ hidden: boolean }>).detail.hidden);
+    };
+    window.addEventListener("jgdo:cinematic", onCinematic);
+    return () => window.removeEventListener("jgdo:cinematic", onCinematic);
+  }, []);
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
+        cinematicHidden ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100",
         scrolled ? "border-b border-border py-3" : "border-b border-transparent py-5"
       )}
     >

@@ -14,6 +14,7 @@ export function FAQAccordion({
   className?: string;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   return (
     <div className={cn("divide-y divide-border rounded-2xl border border-border bg-surface", className)}>
@@ -23,7 +24,11 @@ export function FAQAccordion({
           <div key={item.question}>
             <button
               type="button"
-              onClick={() => setOpenIndex(isOpen ? null : index)}
+              onClick={() => {
+                if (isAnimating) return;
+                setIsAnimating(true);
+                setOpenIndex(isOpen ? null : index);
+              }}
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
@@ -38,7 +43,7 @@ export function FAQAccordion({
                 <Plus className="h-3.5 w-3.5" />
               </motion.span>
             </button>
-            <AnimatePresence initial={false}>
+            <AnimatePresence initial={false} onExitComplete={() => setIsAnimating(false)}>
               {isOpen ? (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
@@ -46,6 +51,7 @@ export function FAQAccordion({
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                   className="overflow-hidden"
+                  onAnimationComplete={() => setIsAnimating(false)}
                 >
                   <p className="px-6 pb-5 text-sm leading-6 text-muted-foreground">
                     {item.answer}
