@@ -31,8 +31,8 @@ export const systemRequirements = [
 
 export const installSteps = [
   {
-    title: "Download the .zip and unzip it",
-    description: "Grab the latest build using the button above, then double-click the .zip to extract JgDo.app.",
+    title: "Download the .dmg and open it",
+    description: "Grab the latest build using the button above, then double-click the .dmg to mount it.",
   },
   {
     title: "Drag JgDo.app to Applications",
