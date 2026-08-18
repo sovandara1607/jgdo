@@ -155,7 +155,7 @@ export function CinematicHero({
   cardHeading = "Window management, redefined.",
   cardDescription = <><span className="text-neutral-900 font-semibold">JgDo</span> lives in your menu bar and snaps windows into place, switches apps instantly, and remembers your workspaces — so multitasking stops feeling like busywork.</>,
   ctaHeading = "Start organizing your windows.",
-  ctaDescription = "Free to start. Takes less than a minute to install on your Mac.",
+  ctaDescription = "One-time purchase. Takes less than a minute to activate on your Mac.",
   className,
   ...props
 }: CinematicHeroProps) {

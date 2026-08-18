@@ -77,8 +77,8 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeSwitcher />
-          <Button href="/download" size="md">
-            Download free
+          <Button href="/pricing" size="md">
+            Get JgDo
           </Button>
         </div>
 
@@ -114,8 +114,8 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <Button href="/download" className="mt-2 w-full">
-                Download free
+              <Button href="/pricing" className="mt-2 w-full">
+                Get JgDo
               </Button>
             </Container>
           </motion.nav>

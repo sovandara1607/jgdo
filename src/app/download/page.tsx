@@ -13,7 +13,7 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Download",
-  description: `Download ${siteConfig.name} ${latestRelease.version} for macOS. Free to start, with checksums, release notes, and previous versions.`,
+  description: `Download ${siteConfig.name} ${latestRelease.version} for macOS. Requires a Pro or Pro+ license key to activate. Checksums, release notes, and previous versions included.`,
   alternates: { canonical: "/download" },
 };
 
@@ -29,7 +29,7 @@ export default function DownloadPage() {
               Download <span className="emphasis">{siteConfig.name}</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Free to install in under a minute. Upgrade to Pro any time from inside the app.
+              Requires a Pro or Pro+ license to activate — <Link href="/pricing" className="underline hover:text-foreground">get a key here</Link> if you don&apos;t have one yet.
             </p>
             <div className="mt-6 flex justify-center">
               <PlatformBadges />

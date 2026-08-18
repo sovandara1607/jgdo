@@ -35,9 +35,9 @@ export const generalFaqs: FAQItem[] = [
 
 export const pricingFaqs: FAQItem[] = [
   {
-    question: "Can I try Pro before paying?",
+    question: "Is there a free trial?",
     answer:
-      "Yes. Every Pro feature is unlocked for 14 days after install, no credit card required. You'll drop back to the Free tier automatically if you don't buy a license.",
+      "No — JgDo requires a license key to run from the first launch. It's a one-time purchase for either Pro or Pro+, activated in seconds with the key emailed to you at checkout.",
   },
   {
     question: "Is this a subscription?",

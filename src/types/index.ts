@@ -65,7 +65,6 @@ export interface PricingTier {
 
 export interface PricingFeatureRow {
   label: string;
-  free: string | boolean;
   pro: string | boolean;
   proPlus: string | boolean;
 }

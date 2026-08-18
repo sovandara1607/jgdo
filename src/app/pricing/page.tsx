@@ -11,7 +11,7 @@ import { pricingFaqs } from "@/data/faqs";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple pricing for JgDo: a generous Free tier, Pro for power users, and Pro+ to back development — all one-time purchases.",
+    "Simple pricing for JgDo: Pro for power users, and Pro+ to back development — both one-time purchases, no subscription.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -36,7 +36,7 @@ export default function PricingPage() {
               Simple pricing, <span className="emphasis">no surprises</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Start free. Upgrade whenever you&apos;re sure — Pro and Pro+ are one-time purchases, not subscriptions.
+              A one-time purchase unlocks the full app — no free tier, no subscription. Pick Pro or Pro+ below.
             </p>
           </Reveal>
         </Container>
@@ -67,9 +67,6 @@ export default function PricingPage() {
                 {pricingComparison.map((row) => (
                   <tr key={row.label} className="border-b border-border last:border-0">
                     <td className="px-6 py-4 text-foreground/85">{row.label}</td>
-                    <td className="px-6 py-4 text-center text-muted-foreground">
-                      {renderCell(row.free)}
-                    </td>
                     <td className="px-6 py-4 text-center text-muted-foreground">
                       {renderCell(row.pro)}
                     </td>

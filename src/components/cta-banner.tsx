@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function CTABanner({
   title = "Stop fighting with window placement.",
-  description = "Free to start. Takes less than a minute to install.",
+  description = "One-time purchase. Takes less than a minute to activate.",
 }: {
   title?: string;
   description?: string;
@@ -18,8 +18,8 @@ export function CTABanner({
         </h2>
         <p className="mx-auto mt-3 max-w-md text-background/70">{description}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href="/download" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
-            Download for free
+          <Button href="/pricing" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
+            Get JgDo
           </Button>
           <Button href="/pricing" size="lg" variant="secondary" inverted>
             View pricing

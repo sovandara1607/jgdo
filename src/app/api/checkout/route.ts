@@ -2,11 +2,14 @@ import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createTransaction } from "@/lib/payway";
+import { createPayment } from "@/lib/cutluy";
 import { siteConfig } from "@/data/site";
 import { pricingTiers } from "@/data/pricing";
 
 const schema = z.object({
   plan: z.enum(["pro", "pro-plus"]),
+  provider: z.enum(["payway", "cutluy"]).default("payway"),
+  email: z.string().email().optional(),
 });
 
 export async function POST(request: Request) {
@@ -23,10 +26,33 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "That plan isn't purchasable." }, { status: 400 });
   }
 
-  const tranId = `${parsed.data.plan}-${Date.now().toString(36)}-${randomUUID().slice(0, 6)}`;
+  const orderId = `${parsed.data.plan}-${Date.now().toString(36)}-${randomUUID().slice(0, 6)}`;
 
+  if (parsed.data.provider === "cutluy") {
+    try {
+      const payment = await createPayment({
+        amount,
+        referenceId: orderId,
+        metadata: { plan: parsed.data.plan, email: parsed.data.email },
+        idempotencyKey: orderId,
+      });
+
+      return NextResponse.json({
+        orderId,
+        provider: "cutluy",
+        paymentId: payment.id,
+        checkoutUrl: payment.checkout_url,
+        qrString: payment.qr_string,
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "CutLuy payment failed";
+      return NextResponse.json({ error: message }, { status: 502 });
+    }
+  }
+
+  // Default: ABA PayWay
   const result = await createTransaction({
-    tranId,
+    tranId: orderId,
     amount,
     currency: "USD",
     items: [
@@ -50,6 +76,8 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
+    orderId,
+    provider: "payway",
     tranId: result.tranId,
     qrString: result.qrString,
     qrImage: result.qrImage,
