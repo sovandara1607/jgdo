@@ -8,9 +8,39 @@ import type { AppRelease } from "@/types";
  */
 export const releases: AppRelease[] = [
   {
-    version: "0.1.8",
+    version: "0.1.9",
     date: "2026-08-18",
     latest: true,
+    highlights: [
+      "JgDo now requires a Pro or Pro+ license key to activate — no free tier",
+      "Redesigned status popover: icon toolbar, colorful per-metric stat cards, live sparkline graphs",
+    ],
+    features: [
+      "Activation window shown at first launch and from the menu bar until a license key is entered",
+      "Settings → License tab for viewing status and deactivating a key",
+      "Live sparkline graphs for CPU, Memory, and Disk in the status popover",
+    ],
+    improvements: [
+      "Status popover redesigned around a System Settings-style icon toolbar instead of a tab bar",
+      "Per-metric mini stat cards (CPU/Memory/Disk) with distinct colors for at-a-glance scanning",
+    ],
+    fixes: [],
+    assets: [
+      {
+        platform: "macos",
+        label: "macOS",
+        arch: "Apple Silicon",
+        fileName: "JgDo-v0.1.9.dmg",
+        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.9/JgDo-v0.1.9.dmg",
+        sizeMb: 2.78,
+        sha256: "d7cefcf769bc25e088edc1927dbf203a3a11ec3d31a03b21f465cb2c8820d0e8",
+      },
+    ],
+  },
+  {
+    version: "0.1.8",
+    date: "2026-08-18",
+    latest: false,
     highlights: [
       "Multi-monitor fix: window operations on secondary displays no longer affect other screens",
       "Redesigned status popover with elevated dashboard style and dark mode support",
@@ -41,7 +71,7 @@ export const releases: AppRelease[] = [
         fileName: "JgDo-v0.1.8.dmg",
         href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.8/JgDo-v0.1.8.dmg",
         sizeMb: 2.68,
-        sha256: "7ca569911e99e877585d57",
+        sha256: "7ca569911e99e877585d57cbedb7cd498b6551fbc7f729b094a53fea5c1e8637",
       },
     ],
   },
