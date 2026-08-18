@@ -8,9 +8,33 @@ import type { AppRelease } from "@/types";
  */
 export const releases: AppRelease[] = [
   {
-    version: "0.1.9",
+    version: "0.1.10",
     date: "2026-08-18",
     latest: true,
+    highlights: [
+      "Fixed the DMG installer — dragging JgDo into Applications works again",
+    ],
+    features: [],
+    improvements: [],
+    fixes: [
+      "The DMG only contained JgDo.app with no Applications shortcut to drag onto, so the standard drag-to-install gesture silently did nothing",
+    ],
+    assets: [
+      {
+        platform: "macos",
+        label: "macOS",
+        arch: "Apple Silicon",
+        fileName: "JgDo-v0.1.10.dmg",
+        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.10/JgDo-v0.1.10.dmg",
+        sizeMb: 2.78,
+        sha256: "bdd24352a97198306ee23ba40008843b4c2f52c3243304681498408d02a5944e",
+      },
+    ],
+  },
+  {
+    version: "0.1.9",
+    date: "2026-08-18",
+    latest: false,
     highlights: [
       "JgDo now requires a Pro or Pro+ license key to activate — no free tier",
       "Redesigned status popover: icon toolbar, colorful per-metric stat cards, live sparkline graphs",
