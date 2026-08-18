@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +18,6 @@ interface ButtonProps {
   icon?: ReactNode;
   disabled?: boolean;
   external?: boolean;
-  /** Use on a dark (bg-foreground) surface so borders/text stay visible. */
   inverted?: boolean;
 }
 
@@ -54,7 +52,7 @@ export function Button({
   inverted = false,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex select-none items-center justify-center whitespace-nowrap rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex select-none items-center justify-center whitespace-nowrap rounded-full font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97]",
     inverted ? invertedVariantStyles[variant] : variantStyles[variant],
     sizeStyles[size],
     className
@@ -67,44 +65,24 @@ export function Button({
     </>
   );
 
-  const motionProps = {
-    whileHover: disabled ? undefined : { scale: 1.02 },
-    whileTap: disabled ? undefined : { scale: 0.97 },
-    transition: { type: "spring" as const, stiffness: 400, damping: 25 },
-  };
-
   if (href) {
     if (external || href.startsWith("http")) {
       return (
-        <motion.a
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className={classes}
-          {...motionProps}
-        >
+        <a href={href} target="_blank" rel="noreferrer" className={classes}>
           {content}
-        </motion.a>
+        </a>
       );
     }
     return (
-      <motion.div {...motionProps} className="inline-block">
-        <Link href={href} className={classes}>
-          {content}
-        </Link>
-      </motion.div>
+      <Link href={href} className={classes}>
+        {content}
+      </Link>
     );
   }
 
   return (
-    <motion.button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={classes}
-      {...motionProps}
-    >
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {content}
-    </motion.button>
+    </button>
   );
 }

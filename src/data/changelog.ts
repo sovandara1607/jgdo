@@ -8,9 +8,47 @@ import type { AppRelease } from "@/types";
  */
 export const releases: AppRelease[] = [
   {
+    version: "0.1.3",
+    date: "2026-08-18",
+    latest: true,
+    highlights: [
+      "Multi-monitor fix: window operations on secondary displays no longer affect other screens",
+      "Redesigned status popover with elevated dashboard style and dark mode support",
+      "Automated release pipeline with Sparkle auto-updates",
+    ],
+    features: [
+      "Pill-style tab bar in status popover for easier navigation",
+      "Rounded rectangle background (16px) with subtle stroke and dark mode support",
+      "Wider popover frame (320px) with enhanced header and accent colors",
+      "GitHub Actions CI/CD for automated builds and releases",
+    ],
+    improvements: [
+      "Fixed AppKit ↔ CG coordinate conversion to use the correct screen's frame for each window",
+      "Status popover now uses .thinMaterial background for better visual hierarchy",
+      "Improved tab animation with spring timing",
+    ],
+    fixes: [
+      "Fixed multi-monitor coordinate conversion across 6 files: WindowManagerService, WindowDragController, WindowResizeService, WorkspaceService, LayoutPreset, DragTargetPickerOverlay",
+      "Fixed window positioning on secondary monitors",
+      "Fixed workspace save/restore across multiple displays",
+      "Fixed snap preview overlay positioning on non-primary screens",
+    ],
+    assets: [
+      {
+        platform: "macos",
+        label: "macOS",
+        arch: "Apple Silicon",
+        fileName: "JgDo-0.1.3-arm64.dmg",
+        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.3/JgDo-0.1.3-arm64.dmg",
+        sizeMb: 1.5,
+        sha256: "",
+      },
+    ],
+  },
+  {
     version: "0.1.1",
     date: "2026-07-07",
-    latest: true,
+    latest: false,
     highlights: [
       "First real build: window snapping, the Command Palette, clipboard manager, and workspaces all in one menu bar app",
       "Apple Silicon only for now — Intel and a notarized, Developer ID–signed build are on the way",

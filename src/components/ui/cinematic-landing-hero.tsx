@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -164,6 +165,19 @@ export function CinematicHero({
   const mockupRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>(0);
   const [activeShot, setActiveShot] = useState(0);
+  const pathname = usePathname();
+  const ctxRef = useRef<gsap.Context | null>(null);
+
+  // Proactively revert GSAP before React unmounts (triggered by route change)
+  useEffect(() => {
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.killTweensOf("*");
+      ctxRef.current?.revert();
+      ctxRef.current = null;
+      window.dispatchEvent(new CustomEvent("jgdo:cinematic", { detail: { hidden: false } }));
+    };
+  }, [pathname]);
 
   // Cycle through the real popover screenshots (Overview / System / Workspace tabs)
   useEffect(() => {
@@ -213,7 +227,7 @@ export function CinematicHero({
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
 
-    const ctx = gsap.context(() => {
+    ctxRef.current = gsap.context(() => {
       gsap.set(".text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
       gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
       gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
@@ -276,8 +290,8 @@ export function CinematicHero({
     }, containerRef);
 
     return () => {
-      ctx.revert();
-      window.dispatchEvent(new CustomEvent("jgdo:cinematic", { detail: { hidden: false } }));
+      ctxRef.current?.revert();
+      ctxRef.current = null;
     };
   },[]);
 

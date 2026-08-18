@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { Search } from "lucide-react";
-import { StaggerGroup, StaggerItem } from "@/components/ui/reveal";
-import { formatDate, cn } from "@/lib/utils";
+import { BlogCard } from "@/components/blog/blog-card";
+import { NewsletterForm } from "@/components/blog/newsletter-form";
+import { StaggerGroup } from "@/components/ui/reveal";
+import { Reveal } from "@/components/ui/reveal";
+import { cn } from "@/lib/utils";
 import type { BlogPostMeta } from "@/types";
 
 export function BlogList({
@@ -25,6 +27,9 @@ export function BlogList({
       return matchesCategory && matchesQuery;
     });
   }, [posts, query, category]);
+
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
 
   return (
     <div>
@@ -62,35 +67,26 @@ export function BlogList({
           No posts match &ldquo;{query}&rdquo;.
         </p>
       ) : (
-        <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((post) => (
-            <StaggerItem key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
-              >
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="rounded-full bg-accent-soft px-2.5 py-1 font-medium text-accent">
-                    {post.category}
-                  </span>
-                  <span>&middot;</span>
-                  <span>{post.readingTime}</span>
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-foreground transition-colors group-hover:text-accent">
-                  {post.title}
-                </h3>
-                <p className="mt-2 line-clamp-3 flex-1 text-sm leading-6 text-muted-foreground">
-                  {post.description}
-                </p>
-                <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>{post.author}</span>
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>
-                </div>
-              </Link>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+        <>
+          {featured ? (
+            <div className="mt-10">
+              <BlogCard post={featured} featured />
+            </div>
+          ) : null}
+
+          {rest.length > 0 ? (
+            <StaggerGroup className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </StaggerGroup>
+          ) : null}
+        </>
       )}
+
+      <Reveal className="mt-20">
+        <NewsletterForm />
+      </Reveal>
     </div>
   );
 }

@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "JgDo is a macOS menu bar app that snaps windows into place, switches apps instantly, and remembers your workspaces — so multitasking stops feeling like busywork.",
   url: "https://jgdo.sovandara.lol",
-  currentVersion: "0.1.1",
+  currentVersion: "0.1.3",
   keywords: [
     "window manager",
     "macOS window manager",
@@ -24,6 +24,7 @@ export const siteConfig = {
   },
   nav: [
     { label: "Features", href: "/features" },
+    { label: "Docs", href: "/docs" },
     { label: "Pricing", href: "/pricing" },
     { label: "Changelog", href: "/changelog" },
     { label: "Blog", href: "/blog" },
@@ -39,7 +40,7 @@ export const siteConfig = {
     resources: [
       { label: "Blog", href: "/blog" },
       { label: "Support", href: "/support" },
-      { label: "Documentation", href: "/support#docs" },
+      { label: "Documentation", href: "/docs" },
       { label: "GitHub", href: "https://github.com/sovandara1607/jgdo-app" },
     ],
     company: [

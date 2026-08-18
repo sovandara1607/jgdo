@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Book, LifeBuoy, Rocket, Settings } from "lucide-react";
+import { ArrowRight, LifeBuoy } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { DiscordIcon, GithubIcon } from "@/components/icons/brand-icons";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -11,30 +11,9 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Support",
-  description: "Documentation, FAQs, and ways to get in touch with the JgDo team.",
+  description: "FAQs, community links, and ways to get in touch with the JgDo team.",
   alternates: { canonical: "/support" },
 };
-
-const docs = [
-  {
-    icon: Rocket,
-    title: "Getting started",
-    description: "Install JgDo, grant permissions, and learn the default shortcuts.",
-    href: "/download",
-  },
-  {
-    icon: Settings,
-    title: "Shortcuts & customization",
-    description: "Remap any action and resolve shortcut conflicts.",
-    href: "/features",
-  },
-  {
-    icon: Book,
-    title: "Guides",
-    description: "Deep dives on workspaces, the Command Palette, and more.",
-    href: "/blog",
-  },
-];
 
 export default function SupportPage() {
   return (
@@ -52,27 +31,22 @@ export default function SupportPage() {
         </Container>
       </section>
 
-      <section id="docs" className="scroll-mt-24 pb-24">
-        <Container>
-          <SectionHeading eyebrow="Documentation" title="Start here" />
-          <StaggerGroup className="mt-12 grid gap-5 sm:grid-cols-3">
-            {docs.map((doc) => (
-              <StaggerItem key={doc.title}>
-                <a
-                  href={doc.href}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft text-accent">
-                    <doc.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 font-semibold text-foreground">{doc.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {doc.description}
-                  </p>
-                </a>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+      <section className="pb-24">
+        <Container className="max-w-2xl">
+          <Reveal>
+            <a
+              href="/docs"
+              className="group flex items-center justify-between rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+            >
+              <div>
+                <h2 className="font-semibold text-foreground">Documentation</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Installation, shortcuts, guides, and deep dives.
+                </p>
+              </div>
+              <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors" />
+            </a>
+          </Reveal>
         </Container>
       </section>
 

@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { ShareButtons } from "@/components/blog/share-buttons";
+import { RelatedPosts } from "@/components/blog/related-posts";
+import { NewsletterForm } from "@/components/blog/newsletter-form";
 import { mdxComponents } from "@/components/mdx-components";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -50,6 +53,15 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const allPosts = getAllPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+  const related = allPosts
+    .filter((p) => p.slug !== slug && (p.category === post.category || p.tags.some((t) => post.tags.includes(t))))
+    .slice(0, 3);
+
   const toc = extractToc(post.content);
 
   const jsonLd = {
@@ -60,6 +72,8 @@ export default async function BlogPostPage({
     datePublished: post.date,
     author: { "@type": "Person", name: post.author },
   };
+
+  const postUrl = `${siteConfig.url}/blog/${post.slug}`;
 
   return (
     <article className="py-16 sm:py-20">
@@ -92,19 +106,22 @@ export default async function BlogPostPage({
           </h1>
           <p className="mt-3 text-lg text-muted-foreground">{post.description}</p>
 
-          <div className="mt-6 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent">
-              {post.author
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent">
+                {post.author
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground">{post.author}</p>
+                {post.authorRole ? (
+                  <p className="text-xs text-muted-foreground">{post.authorRole}</p>
+                ) : null}
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-medium text-foreground">{post.author}</p>
-              {post.authorRole ? (
-                <p className="text-xs text-muted-foreground">{post.authorRole}</p>
-              ) : null}
-            </div>
+            <ShareButtons url={postUrl} title={post.title} />
           </div>
         </Reveal>
       </Container>
@@ -129,6 +146,59 @@ export default async function BlogPostPage({
             <TableOfContents entries={toc} />
           </aside>
         </div>
+      </Container>
+
+      <Container className="mt-16 max-w-3xl">
+        <Reveal>
+          <div className="border-t border-border pt-8">
+            <ShareButtons url={postUrl} title={post.title} />
+          </div>
+        </Reveal>
+
+        {(prevPost || nextPost) ? (
+          <Reveal className="mt-8">
+            <nav className="grid gap-4 sm:grid-cols-2">
+              {prevPost ? (
+                <Link
+                  href={`/blog/${prevPost.slug}`}
+                  className="group flex flex-col rounded-2xl border border-border bg-surface p-5 transition-all hover:border-accent/40 hover:shadow-sm"
+                >
+                  <span className="text-xs text-muted-foreground">Previous</span>
+                  <span className="mt-1 text-sm font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-1">
+                    {prevPost.title}
+                  </span>
+                </Link>
+              ) : (
+                <div />
+              )}
+              {nextPost ? (
+                <Link
+                  href={`/blog/${nextPost.slug}`}
+                  className="group flex flex-col items-end rounded-2xl border border-border bg-surface p-5 transition-all hover:border-accent/40 hover:shadow-sm"
+                >
+                  <span className="text-xs text-muted-foreground">Next</span>
+                  <span className="mt-1 text-sm font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-1 text-right">
+                    {nextPost.title}
+                  </span>
+                </Link>
+              ) : null}
+            </nav>
+          </Reveal>
+        ) : null}
+      </Container>
+
+      {related.length > 0 ? (
+        <Container className="mt-16 max-w-5xl">
+          <Reveal>
+            <RelatedPosts posts={related} />
+          </Reveal>
+        </Container>
+      ) : null}
+
+      <Container className="mt-16 max-w-2xl">
+        <Reveal>
+          <NewsletterForm />
+        </Reveal>
       </Container>
     </article>
   );
