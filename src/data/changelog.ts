@@ -8,7 +8,7 @@ import type { AppRelease } from "@/types";
  */
 export const releases: AppRelease[] = [
   {
-    version: "0.1.3",
+    version: "0.1.8",
     date: "2026-08-18",
     latest: true,
     highlights: [
@@ -38,10 +38,10 @@ export const releases: AppRelease[] = [
         platform: "macos",
         label: "macOS",
         arch: "Apple Silicon",
-        fileName: "JgDo-0.1.3-arm64.dmg",
-        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.3/JgDo-0.1.3-arm64.dmg",
-        sizeMb: 1.5,
-        sha256: "",
+        fileName: "JgDo-v0.1.8.dmg",
+        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.8/JgDo-v0.1.8.dmg",
+        sizeMb: 2.68,
+        sha256: "7ca569911e99e877585d57",
       },
     ],
   },
