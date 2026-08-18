@@ -12,40 +12,72 @@ export interface SendLicenseEmailParams {
   licenseKey: string;
 }
 
+/**
+ * License delivery email. Styled to match the website's design system
+ * exactly (src/app/globals.css, components/ui/button.tsx): flat black/white,
+ * no accent color, no gradients, hairline borders instead of shadows, italic
+ * for emphasis instead of color, solid black pill buttons. Email clients
+ * don't load Tailwind, so every value here is a literal hex/px pulled from
+ * those files rather than a class name — keep them in sync if the site
+ * theme ever changes.
+ */
 export async function sendLicenseEmail(params: SendLicenseEmailParams): Promise<void> {
   const client = getClient();
   const planName = params.plan === "pro-plus" ? "Pro+" : "Pro";
 
   const { error } = await client.emails.send({
-    from: "JgDo <onboarding@resend.dev>",
+    // Sent from the domain verified in Resend. hello@/support@jgdo.app (a
+    // separate domain) stay the human-facing contact addresses — this one
+    // exists only to send transactional mail.
+    from: "JgDo <license@jgdo.sovandara.lol>",
     to: params.to,
     subject: `Your JgDo ${planName} License Key`,
     html: `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px;">
-        <h1 style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px;">
-          Welcome to JgDo ${planName}!
-        </h1>
-        <p style="font-size: 16px; color: #4a4a4a; line-height: 1.6; margin-bottom: 24px;">
-          Thanks for upgrading! Here's your license key:
-        </p>
-        <div style="background: #f5f5f5; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
-          <code style="font-size: 14px; color: #1a1a1a; word-break: break-all;">
-            ${params.licenseKey}
-          </code>
-        </div>
-        <p style="font-size: 16px; color: #4a4a4a; line-height: 1.6; margin-bottom: 24px;">
-          To activate:
-        </p>
-        <ol style="font-size: 16px; color: #4a4a4a; line-height: 1.8; padding-left: 24px; margin-bottom: 24px;">
-          <li>Open JgDo and click the menu bar icon</li>
-          <li>Select "Enter License Key"</li>
-          <li>Paste your license key above</li>
-        </ol>
-        <p style="font-size: 14px; color: #8a8a8a; margin-top: 32px;">
-          Keep this email for your records. If you have any issues, contact us at
-          <a href="mailto:hello@jgdo.app" style="color: #4a4a4a;">hello@jgdo.app</a>.
-        </p>
+<body style="margin: 0; padding: 40px 20px; background: #f4f4f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <div style="max-width: 560px; margin: 0 auto; background: #ffffff; border: 1px solid #e4e4e7; border-radius: 20px; padding: 40px;">
+
+    <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #71717a; margin: 0 0 24px;">
+      JgDo
+    </div>
+
+    <h1 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin: 0 0 12px;">
+      Welcome to <span style="font-style: italic; font-weight: 500;">JgDo</span> ${planName}
+    </h1>
+    <p style="font-size: 15px; color: #52525b; line-height: 1.6; margin: 0 0 28px;">
+      Thanks for upgrading. Here's your license key — paste it into JgDo to activate.
+    </p>
+
+    <div style="background: #f4f4f5; border: 1px solid #e4e4e7; border-radius: 14px; padding: 20px 24px; margin: 0 0 28px; text-align: center;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #a1a1aa; margin: 0 0 8px;">
+        License Key
       </div>
+      <code style="font-family: 'SF Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 17px; color: #0a0a0a; letter-spacing: 0.03em;">
+        ${params.licenseKey}
+      </code>
+    </div>
+
+    <div style="margin: 0 0 32px;">
+      <div style="font-size: 13px; font-weight: 600; color: #0a0a0a; margin: 0 0 12px;">
+        To activate
+      </div>
+      <ol style="margin: 0; padding-left: 20px; color: #3f3f46; font-size: 14px; line-height: 1.9;">
+        <li>Open JgDo — the activation window appears automatically until a key is entered</li>
+        <li>Paste your license key above</li>
+        <li>Click Activate</li>
+      </ol>
+    </div>
+
+    <a href="https://jgdo.sovandara.lol/download"
+       style="display: inline-block; background: #0a0a0a; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 999px;">
+      Download JgDo →
+    </a>
+
+    <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #e4e4e7; font-size: 12.5px; color: #a1a1aa; line-height: 1.6;">
+      Keep this email for your records. Questions? <a href="mailto:hello@jgdo.app" style="color: #52525b; text-decoration: underline;">hello@jgdo.app</a>
+    </div>
+
+  </div>
+</body>
     `,
   });
 
