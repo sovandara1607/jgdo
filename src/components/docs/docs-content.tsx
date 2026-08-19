@@ -200,7 +200,7 @@ export function DocsContent() {
                 Can&rsquo;t find what you&rsquo;re looking for?
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Check the full feature list or reach out on Discord.
+                Check the full feature list or reach out to support.
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
                 <a
@@ -211,12 +211,10 @@ export function DocsContent() {
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
                 <a
-                  href="https://discord.gg/jgdo"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="/support#contact"
                   className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
                 >
-                  Ask on Discord
+                  Contact support
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </div>

@@ -1,4 +1,4 @@
-export type DocCategory = "getting-started" | "windows" | "productivity" | "engineering";
+export type DocCategory = "getting-started" | "windows" | "productivity";
 
 export interface DocItem {
   slug: string;
@@ -25,11 +25,6 @@ export const docCategories: { id: DocCategory; label: string; description: strin
     id: "productivity",
     label: "Productivity",
     description: "Switch apps, jump to windows, manage your clipboard, and save workspaces.",
-  },
-  {
-    id: "engineering",
-    label: "Engineering",
-    description: "Under-the-hood deep dives on how JgDo works on macOS.",
   },
 ];
 
@@ -68,9 +63,8 @@ export const docs: DocItem[] = [
     description:
       "The handful of shortcuts that cover almost every layout you'll ever need, plus the cycling trick most people miss.",
     category: "windows",
-    href: "/blog/window-snapping-shortcuts",
+    href: "/features#window-snapping",
     icon: "LayoutGrid",
-    badge: "Guide",
   },
   {
     slug: "drag-to-snap",
@@ -107,9 +101,8 @@ export const docs: DocItem[] = [
     description:
       "A Spotlight-style, window-level switcher with live thumbnails — jump to any window across every open app in under a second.",
     category: "productivity",
-    href: "/blog/introducing-command-palette",
+    href: "/features#command-palette",
     icon: "Command",
-    badge: "Guide",
   },
   {
     slug: "clipboard-manager",
@@ -126,9 +119,8 @@ export const docs: DocItem[] = [
     description:
       "Save every visible window's app and position, then restore the entire arrangement later — including launching whatever isn't already running.",
     category: "productivity",
-    href: "/blog/workspaces-one-shortcut",
+    href: "/features#workspaces",
     icon: "LayoutTemplate",
-    badge: "Guide",
   },
   {
     slug: "app-switcher",
@@ -147,17 +139,5 @@ export const docs: DocItem[] = [
     category: "productivity",
     href: "/features#workflow-insights",
     icon: "BarChart3",
-  },
-
-  // Engineering
-  {
-    slug: "window-drag-tracking",
-    title: "How JgDo tracks window drags",
-    description:
-      "macOS has no callback for 'a window from a different app is being dragged.' Here's the polling and classification approach we landed on.",
-    category: "engineering",
-    href: "/blog/dragging-windows-without-a-native-api",
-    icon: "Code2",
-    badge: "Deep dive",
   },
 ];

@@ -1,15 +1,11 @@
 import Link from "next/link";
-import { DiscordIcon, GithubIcon, XIcon } from "@/components/icons/brand-icons";
+import { GithubIcon } from "@/components/icons/brand-icons";
 import { Logo } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/data/site";
 
-const socials = [
-  { label: "GitHub", href: siteConfig.links.github, icon: GithubIcon },
-  { label: "Discord", href: siteConfig.links.discord, icon: DiscordIcon },
-  { label: "Twitter / X", href: siteConfig.links.twitter, icon: XIcon },
-];
+const socials = [{ label: "GitHub", href: siteConfig.links.github, icon: GithubIcon }];
 
 const navGroups = [
   { title: "Product", items: siteConfig.footerNav.product },

@@ -11,13 +11,13 @@ export const platformAvailability: PlatformAvailability[] = [
     platform: "windows",
     label: "Windows",
     available: false,
-    note: "On the roadmap — join Discord for updates",
+    note: "On the roadmap — check the changelog for updates",
   },
   {
     platform: "linux",
     label: "Linux",
     available: false,
-    note: "On the roadmap — join Discord for updates",
+    note: "On the roadmap — check the changelog for updates",
   },
 ];
 

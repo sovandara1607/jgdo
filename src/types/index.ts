@@ -60,6 +60,7 @@ export interface PricingTier {
   cta: string;
   href: string;
   highlighted?: boolean;
+  badge?: string;
   features: string[];
 }
 
@@ -67,20 +68,4 @@ export interface PricingFeatureRow {
   label: string;
   pro: string | boolean;
   proPlus: string | boolean;
-}
-
-export interface BlogFrontmatter {
-  title: string;
-  description: string;
-  date: string;
-  category: string;
-  author: string;
-  authorRole?: string;
-  tags: string[];
-  coverImage?: string;
-}
-
-export interface BlogPostMeta extends BlogFrontmatter {
-  slug: string;
-  readingTime: string;
 }

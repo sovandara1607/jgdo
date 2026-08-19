@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowRight, LifeBuoy } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
-import { DiscordIcon, GithubIcon } from "@/components/icons/brand-icons";
+import { GithubIcon } from "@/components/icons/brand-icons";
 import { FaqSection } from "@/components/sections/faq-section";
 import { Container } from "@/components/ui/container";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/reveal";
@@ -25,7 +25,7 @@ export default function SupportPage() {
               How can we help?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Browse the docs, ask the community, or reach the team directly.
+              Browse the docs, report an issue on GitHub, or reach the team directly.
             </p>
           </Reveal>
         </Container>
@@ -52,24 +52,8 @@ export default function SupportPage() {
 
       <section className="pb-24">
         <Container>
-          <SectionHeading eyebrow="Community" title="Ask the community" />
-          <StaggerGroup className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
-            <StaggerItem>
-              <a
-                href={siteConfig.links.discord}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft text-accent">
-                  <DiscordIcon className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">Discord</p>
-                  <p className="text-sm text-muted-foreground">Chat with the team & community</p>
-                </div>
-              </a>
-            </StaggerItem>
+          <SectionHeading eyebrow="Community" title="Report bugs & request features" />
+          <StaggerGroup className="mx-auto mt-12 grid max-w-md gap-5">
             <StaggerItem>
               <a
                 href={siteConfig.links.github}

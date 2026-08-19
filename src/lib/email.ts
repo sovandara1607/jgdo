@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { siteConfig } from "@/data/site";
 
 function getClient(): Resend {
   const key = process.env.RESEND_API_KEY;
@@ -26,8 +27,8 @@ export async function sendLicenseEmail(params: SendLicenseEmailParams): Promise<
   const planName = params.plan === "pro-plus" ? "Pro+" : "Pro";
 
   const { error } = await client.emails.send({
-    // Sent from the domain verified in Resend. hello@/support@jgdo.app (a
-    // separate domain) stay the human-facing contact addresses — this one
+    // Sent from the domain verified in Resend. siteConfig.links.email /
+    // supportEmail stay the human-facing contact addresses — this one
     // exists only to send transactional mail.
     from: "JgDo <license@jgdo.sovandara.lol>",
     to: params.to,
@@ -73,7 +74,7 @@ export async function sendLicenseEmail(params: SendLicenseEmailParams): Promise<
     </a>
 
     <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #e4e4e7; font-size: 12.5px; color: #a1a1aa; line-height: 1.6;">
-      Keep this email for your records. Questions? <a href="mailto:hello@jgdo.app" style="color: #52525b; text-decoration: underline;">hello@jgdo.app</a>
+      Keep this email for your records. Questions? <a href="mailto:${siteConfig.links.supportEmail}" style="color: #52525b; text-decoration: underline;">${siteConfig.links.supportEmail}</a>
     </div>
 
   </div>

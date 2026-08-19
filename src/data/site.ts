@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "JgDo is a macOS menu bar app that snaps windows into place, switches apps instantly, and remembers your workspaces — so multitasking stops feeling like busywork.",
   url: "https://jgdo.sovandara.lol",
-  currentVersion: "0.1.8",
+  currentVersion: "0.1.10",
   keywords: [
     "window manager",
     "macOS window manager",
@@ -17,17 +17,14 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/sovandara1607/jgdo-app",
-    discord: "https://discord.gg/jgdo",
-    twitter: "https://twitter.com/jgdoapp",
-    email: "hello@jgdo.app",
-    supportEmail: "support@jgdo.app",
+    email: "rithsovandara83@gmail.com",
+    supportEmail: "rithsovandara83@gmail.com",
   },
   nav: [
     { label: "Features", href: "/features" },
     { label: "Docs", href: "/docs" },
     { label: "Pricing", href: "/pricing" },
     { label: "Changelog", href: "/changelog" },
-    { label: "Blog", href: "/blog" },
     { label: "Support", href: "/support" },
   ],
   footerNav: {
@@ -38,16 +35,11 @@ export const siteConfig = {
       { label: "Changelog", href: "/changelog" },
     ],
     resources: [
-      { label: "Blog", href: "/blog" },
       { label: "Support", href: "/support" },
       { label: "Documentation", href: "/docs" },
       { label: "GitHub", href: "https://github.com/sovandara1607/jgdo-app" },
     ],
-    company: [
-      { label: "Contact", href: "/support#contact" },
-      { label: "Discord", href: "https://discord.gg/jgdo" },
-      { label: "Twitter / X", href: "https://twitter.com/jgdoapp" },
-    ],
+    company: [{ label: "Contact", href: "/support#contact" }],
     legal: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },

@@ -19,7 +19,7 @@ export const generalFaqs: FAQItem[] = [
   {
     question: "Is JgDo available for Windows or Linux?",
     answer:
-      "Not yet. JgDo is built around macOS-specific APIs (Accessibility, ScreenCaptureKit) to keep window snapping fast and reliable. Windows and Linux support are on the roadmap — join the Discord to get notified.",
+      "Not yet. JgDo is built around macOS-specific APIs (Accessibility, ScreenCaptureKit) to keep window snapping fast and reliable. Windows and Linux support are on the roadmap — check the changelog for updates.",
   },
   {
     question: "Will JgDo slow down my Mac?",
@@ -52,6 +52,6 @@ export const pricingFaqs: FAQItem[] = [
   {
     question: "Do you offer team or education discounts?",
     answer:
-      "Yes — reach out at hello@jgdo.app with your team size or .edu email and we'll get you a discount code.",
+      "Yes — reach out at rithsovandara83@gmail.com with your team size or .edu email and we'll get you a discount code.",
   },
 ];
