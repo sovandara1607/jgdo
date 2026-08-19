@@ -5,6 +5,12 @@ import { useRouter } from "next/navigation";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 
+const waitSteps = [
+  "Complete the payment in your banking app",
+  "We check for confirmation automatically every few seconds — no need to refresh",
+  "You're redirected here and emailed your license key the moment it's confirmed",
+];
+
 type Plan = "pro" | "pro-plus";
 type Provider = "payway" | "cutluy";
 type Status = "idle" | "loading" | "ready" | "error" | "success";
@@ -233,11 +239,22 @@ export function CheckoutForm({ plan }: { plan: Plan }) {
               </button>.
             </p>
           ) : (
-            <p className="mt-4 text-sm text-muted-foreground flex items-center justify-center gap-2">
+            <p className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
               <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
               Waiting for payment…
             </p>
           )}
+
+          <ol className="mt-6 space-y-3 rounded-2xl border border-border bg-surface p-5 text-left">
+            {waitSteps.map((step, i) => (
+              <li key={step} className="flex gap-3 text-sm text-muted-foreground">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-surface-muted text-[11px] font-semibold text-foreground">
+                  {i + 1}
+                </span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
         </>
       )}
     </div>

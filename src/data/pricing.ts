@@ -9,6 +9,7 @@ export const pricingTiers: PricingTier[] = [
     cta: "Get Pro",
     href: "/checkout?plan=pro",
     highlighted: true,
+    badge: "Most popular",
     features: [
       "Window snapping (10 built-in layouts)",
       "⌘-drag to snap into available space",
@@ -28,6 +29,7 @@ export const pricingTiers: PricingTier[] = [
     description: "Everything in Pro, plus a little extra to back development.",
     cta: "Get Pro+",
     href: "/checkout?plan=pro-plus",
+    badge: "Support development",
     features: [
       "Everything in Pro",
       "Lifetime free updates",

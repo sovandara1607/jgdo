@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function PricingCards() {
   return (
-    <StaggerGroup className="grid gap-6 lg:grid-cols-3">
+    <StaggerGroup className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
       {pricingTiers.map((tier) => {
         const priceLabel = tier.price === 0 ? "$0" : `$${tier.price.toFixed(2)}`;
 
@@ -16,38 +16,94 @@ export function PricingCards() {
           <StaggerItem
             key={tier.id}
             className={cn(
-              "relative flex flex-col rounded-3xl border p-8",
+              "relative flex flex-col overflow-hidden rounded-3xl border p-8 transition-colors",
               tier.highlighted
-                ? "border-2 border-foreground bg-surface"
-                : "border-border bg-surface"
+                ? "border-foreground bg-foreground text-background"
+                : "border-border bg-surface hover:border-foreground/30"
             )}
           >
+            {/* Same soft blue glow as the global body background, just
+                dialed up slightly so it still reads against a dark card. */}
             {tier.highlighted ? (
-              <span className="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">
-                Most popular
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(96,165,250,0.3), transparent 70%)",
+                }}
+              />
+            ) : null}
+
+            {tier.badge ? (
+              <span
+                className={cn(
+                  "relative mb-5 inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold",
+                  tier.highlighted
+                    ? "bg-background text-foreground"
+                    : "bg-accent-soft text-foreground"
+                )}
+              >
+                {tier.badge}
               </span>
             ) : null}
-            <h3 className="text-lg font-semibold text-foreground">{tier.name}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{tier.description}</p>
-            <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-semibold tracking-tight text-foreground">
-                {priceLabel}
-              </span>
+
+            <h3 className="relative text-lg font-semibold">{tier.name}</h3>
+            <p
+              className={cn(
+                "relative mt-1 text-sm",
+                tier.highlighted ? "text-background/70" : "text-muted-foreground"
+              )}
+            >
+              {tier.description}
+            </p>
+
+            <div className="relative mt-6 flex items-baseline gap-1">
+              <span className="text-4xl font-semibold tracking-tight">{priceLabel}</span>
               {tier.price > 0 ? (
-                <span className="text-sm text-muted-foreground">one-time</span>
+                <span
+                  className={cn(
+                    "text-sm",
+                    tier.highlighted ? "text-background/60" : "text-muted-foreground"
+                  )}
+                >
+                  one-time
+                </span>
               ) : null}
             </div>
+
             <Button
               href={tier.href}
               variant={tier.highlighted ? "primary" : "secondary"}
-              className="mt-6 w-full"
+              inverted={tier.highlighted}
+              className="relative mt-6 w-full"
             >
               {tier.cta}
             </Button>
-            <ul className="mt-8 space-y-3">
+
+            <p
+              className={cn(
+                "relative mt-6 text-xs font-semibold uppercase tracking-wider",
+                tier.highlighted ? "text-background/50" : "text-muted-foreground"
+              )}
+            >
+              What&rsquo;s included
+            </p>
+            <ul className="relative mt-3 space-y-3">
               {tier.features.map((feature) => (
-                <li key={feature} className="flex gap-2.5 text-sm text-foreground/85">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <li
+                  key={feature}
+                  className={cn(
+                    "flex gap-2.5 text-sm",
+                    tier.highlighted ? "text-background/85" : "text-foreground/85"
+                  )}
+                >
+                  <Check
+                    className={cn(
+                      "mt-0.5 h-4 w-4 shrink-0",
+                      tier.highlighted ? "text-background" : "text-accent"
+                    )}
+                  />
                   {feature}
                 </li>
               ))}

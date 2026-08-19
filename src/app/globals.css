@@ -12,6 +12,7 @@
   --accent-foreground: #ffffff;
   --accent-soft: rgba(10, 10, 10, 0.06);
   --muted-foreground: #52525b;
+  --glow-blue: rgba(59, 130, 246, 0.22);
 }
 
 .dark {
@@ -24,6 +25,7 @@
   --accent-foreground: #0a0a0a;
   --accent-soft: rgba(255, 255, 255, 0.08);
   --muted-foreground: #a1a1aa;
+  --glow-blue: rgba(96, 165, 250, 0.28);
 }
 
 @theme inline {
@@ -36,6 +38,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-soft: var(--accent-soft);
   --color-muted-foreground: var(--muted-foreground);
+  --color-glow-blue: var(--glow-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --animate-float: float 6s ease-in-out infinite;
@@ -51,8 +54,16 @@ html {
   color-scheme: light dark;
 }
 
+/* A soft blue radial glow, centered on the viewport and fixed in place —
+   the one deliberate exception to the site's otherwise strictly
+   monochrome palette (see feedback_no_gradients_monochrome memory).
+   background-attachment: fixed keeps it centered on-screen regardless of
+   scroll position, rather than centered on the (much taller) document. */
 body {
-  background: var(--background);
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, var(--glow-blue), transparent 70%),
+    var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
 }
 
@@ -74,34 +85,6 @@ body {
 
 .text-balance {
   text-wrap: balance;
-}
-
-.prose-content :where(code):not(pre code) {
-  border-radius: 0.25rem;
-  background: var(--color-surface-muted);
-  padding: 0.1rem 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-  color: var(--color-foreground);
-}
-
-.prose-content pre code {
-  display: grid;
-  font-family: var(--font-mono);
-}
-
-.prose-content [data-rehype-pretty-code-figure] pre {
-  margin: 0;
-}
-
-.prose-content [data-line] {
-  padding: 0 1rem;
-  border-left: 2px solid transparent;
-}
-
-.prose-content [data-highlighted-line] {
-  background: var(--color-surface-muted);
-  border-left-color: var(--accent);
 }
 
 ::selection {

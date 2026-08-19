@@ -298,11 +298,15 @@ export function CinematicHero({
   return (
     <div
       ref={containerRef}
-      className={cn("relative w-screen h-screen overflow-hidden flex items-center justify-center bg-background text-foreground font-sans antialiased", className)}
+      className={cn("relative w-screen h-screen overflow-hidden flex items-center justify-center text-foreground font-sans antialiased", className)}
       style={{ perspective: "1500px" }}
       {...props}
     >
       <style dangerouslySetInnerHTML={{ __html: INJECTED_STYLES }} />
+      {/* No bg-background here on purpose: the body's fixed-position glow
+          (globals.css) is what shows through. A second, locally-faded glow
+          on the hero used to create a visible seam where it met the body's
+          glow at the hero's bottom edge — one continuous gradient instead. */}
       <div className="film-grain" aria-hidden="true" />
       <div className="bg-grid-theme absolute inset-0 z-0 pointer-events-none opacity-50" aria-hidden="true" />
 
