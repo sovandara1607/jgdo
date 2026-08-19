@@ -54,6 +54,58 @@ export const features: Feature[] = [
     category: "windows",
   },
   {
+    slug: "window-parking",
+    title: "Window parking",
+    description:
+      "Tuck a window out of the way into its own named, searchable list — different from minimize, and it comes back exactly where it was.",
+    benefits: [
+      "Captures the window's frame, display, and app identity before it's parked",
+      "Restores to the right spot even if a monitor reconnects in between",
+      "Give a parked window a name so you can find it later",
+    ],
+    icon: "ParkingSquare",
+    category: "windows",
+  },
+  {
+    slug: "always-on-top",
+    title: "Always-on-top pinning",
+    description:
+      "Pin any window so it floats above everything else, even while you work in other apps.",
+    benefits: [
+      "Keep a reference doc, video call, or timer visible no matter what's focused",
+      "Unpin the same way — one shortcut, no digging through menus",
+      "Works on any app's window, not just JgDo's own panels",
+    ],
+    icon: "Pin",
+    category: "windows",
+  },
+  {
+    slug: "snap-groups",
+    title: "Snap groups",
+    description:
+      "Capture the windows you have arranged right now as a named group, then move, resize, or minimize them together as one unit.",
+    benefits: [
+      "You decide what belongs in a group — no automatic or AI grouping",
+      "Grouped windows carry a small badge wherever Window Search shows them",
+      "Move, resize, minimize, hide, or close the whole group in one action",
+    ],
+    icon: "Group",
+    category: "windows",
+  },
+  {
+    slug: "layout-presets",
+    title: "Layout presets",
+    description:
+      "Save the shape of your current window arrangement and reapply it later — to whatever apps happen to be open at the time.",
+    benefits: [
+      "Captures fractional geometry, not specific apps, so it fits any day's window set",
+      "Reapply a saved shape in one shortcut instead of rebuilding it by hand",
+      "Complements Workspaces for when you want the layout, not the exact apps",
+    ],
+    icon: "LayoutPanelTop",
+    category: "windows",
+  },
+  {
     slug: "app-switcher",
     title: "App switcher HUD",
     description:
@@ -74,6 +126,7 @@ export const features: Feature[] = [
     benefits: [
       "Fuzzy search across every window, not just app names",
       "Live thumbnails so you recognize windows at a glance",
+      "Reaches into open browser tabs, not just top-level windows",
       "The active app expands inline while others stay tucked away",
     ],
     icon: "Command",
@@ -87,9 +140,23 @@ export const features: Feature[] = [
     benefits: [
       "Pin favorites so they never age out",
       "Paste-in-place returns focus to your previous app automatically",
+      "Copied screenshots are OCR'd automatically, so the text inside is searchable too",
       "Skips password managers and other sensitive clipboard content",
     ],
     icon: "ClipboardList",
+    category: "productivity",
+  },
+  {
+    slug: "scratchpad",
+    title: "Scratchpad",
+    description:
+      "A tiny persistent notes panel, one shortcut away, for jotting something down without switching to a notes app.",
+    benefits: [
+      "Auto-saves on every keystroke — nothing to save or lose",
+      "Same frosted, floating panel as the rest of JgDo",
+      "Always there, always in the same place",
+    ],
+    icon: "StickyNote",
     category: "productivity",
   },
   {
@@ -116,6 +183,19 @@ export const features: Feature[] = [
       "All data stays on your Mac",
     ],
     icon: "BarChart3",
+    category: "focus",
+  },
+  {
+    slug: "focus-mode",
+    title: "Focus mode",
+    description:
+      "Hide every other app in one shortcut, leaving only the one you're working in — then bring them all back exactly the same way.",
+    benefits: [
+      "Toggle on to hide everything but the frontmost app",
+      "Toggle off to unhide exactly the apps this session hid",
+      "No per-window state to manage — it's just the apps you were already using",
+    ],
+    icon: "Focus",
     category: "focus",
   },
   {
@@ -155,6 +235,45 @@ export const features: Feature[] = [
       "No shortcut is hard-coded",
     ],
     icon: "Keyboard",
+    category: "system",
+  },
+  {
+    slug: "battery-alerts",
+    title: "Low-battery alerts",
+    description:
+      "An always-on, event-driven watcher fires a real notification when your battery drops below a threshold you set — no popover has to be open.",
+    benefits: [
+      "Reacts to power-source changes directly, not a polling loop",
+      "Fires exactly once per discharge cycle, not a repeating nag",
+      "Threshold is yours to configure",
+    ],
+    icon: "BatteryWarning",
+    category: "system",
+  },
+  {
+    slug: "storage-breakdown",
+    title: "Storage breakdown",
+    description:
+      "See what's actually taking up space in your home folder — Applications, Desktop, Documents, and the other usual culprits — on demand, in seconds.",
+    benefits: [
+      "Scans a handful of common folders concurrently, not your whole disk",
+      "Runs only when you ask, never automatically in the background",
+      "A faster, lighter alternative to macOS's own Storage pane for a quick check",
+    ],
+    icon: "HardDrive",
+    category: "system",
+  },
+  {
+    slug: "settings-backup",
+    title: "Settings backup",
+    description:
+      "Export every shortcut and preference to a portable file, and restore it on this Mac or a new one in a click.",
+    benefits: [
+      "Covers shortcuts and behavior settings — not license state or clipboard data",
+      "Old backups still import cleanly even after new settings are added",
+      "Moving to a new Mac keeps your exact setup",
+    ],
+    icon: "DatabaseBackup",
     category: "system",
   },
 ];
