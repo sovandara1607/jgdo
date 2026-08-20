@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/site";
+import { ogAppIconDataUri } from "@/lib/og-icon";
 
 export const ogImageSize = { width: 1200, height: 630 };
 
@@ -17,22 +18,12 @@ export function OgImageContent() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <div
-          style={{
-            display: "flex",
-            width: 64,
-            height: 64,
-            borderRadius: 18,
-            background: "#fafafa",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 32,
-            color: "#0a0a0a",
-            fontWeight: 700,
-          }}
-        >
-          J
-        </div>
+        <img
+          src={ogAppIconDataUri}
+          width={64}
+          height={64}
+          style={{ borderRadius: 18 }}
+        />
         <span style={{ fontSize: 40, color: "#fafafa", fontWeight: 600 }}>
           {siteConfig.name}
         </span>
