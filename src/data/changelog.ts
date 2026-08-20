@@ -8,9 +8,37 @@ import type { AppRelease } from "@/types";
  */
 export const releases: AppRelease[] = [
   {
+    version: "0.1.11",
+    date: "2026-08-20",
+    latest: true,
+    highlights: [
+      "The menu bar icon now shows the actual JgDo logo instead of a generic system symbol",
+      "Pick any image as your menu bar icon, with an optional monochrome mode that matches the system look",
+    ],
+    features: [
+      "Settings → General → Menu Bar: choose any image to replace the menu bar icon",
+      "Optional monochrome/template rendering so a custom icon adapts to light and dark menu bars",
+    ],
+    improvements: [
+      "Custom menu bar icons are copied into Application Support so they keep working even if the source file is moved or deleted",
+    ],
+    fixes: [],
+    assets: [
+      {
+        platform: "macos",
+        label: "macOS",
+        arch: "Apple Silicon",
+        fileName: "JgDo-v0.1.11.dmg",
+        href: "https://github.com/sovandara1607/jgdo-app/releases/download/v0.1.11/JgDo-v0.1.11.dmg",
+        sizeMb: 3.15,
+        sha256: "92745bb033662ac92790c28acd1fa3bc257396e710b82367339ff7041eb4ddc0",
+      },
+    ],
+  },
+  {
     version: "0.1.10",
     date: "2026-08-19",
-    latest: true,
+    latest: false,
     highlights: [
       "Window parking, snap groups, and layout presets for organizing and restoring window arrangements",
       "Focus mode, low-battery alerts, and a storage breakdown tile",
