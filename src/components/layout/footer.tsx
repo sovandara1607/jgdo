@@ -10,7 +10,6 @@ const socials = [{ label: "GitHub", href: siteConfig.links.github, icon: GithubI
 const navGroups = [
   { title: "Product", items: siteConfig.footerNav.product },
   { title: "Resources", items: siteConfig.footerNav.resources },
-  { title: "Company", items: siteConfig.footerNav.company },
   { title: "Legal", items: siteConfig.footerNav.legal },
 ];
 
@@ -18,7 +17,7 @@ export function Footer() {
   return (
     <footer className="mt-32 bg-foreground text-background">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div className="max-w-sm">
             <Logo inverted />
             <p className="mt-4 text-sm leading-6 text-background/60">

@@ -38,8 +38,8 @@ export const siteConfig = {
       { label: "Support", href: "/support" },
       { label: "Documentation", href: "/docs" },
       { label: "GitHub", href: "https://github.com/sovandara1607/jgdo-app" },
+      { label: "Contact", href: "/support#contact" },
     ],
-    company: [{ label: "Contact", href: "/support#contact" }],
     legal: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },

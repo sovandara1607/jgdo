@@ -4,22 +4,20 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { DownloadCard } from "@/components/download-card";
 import { PlatformBadges } from "@/components/platform-badges";
 import { ReleaseNotesCard } from "@/components/release-notes-card";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/reveal";
+import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { installSteps, systemRequirements } from "@/data/downloads";
-import { latestRelease, releases } from "@/data/changelog";
+import { latestRelease } from "@/data/changelog";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Download",
-  description: `Download ${siteConfig.name} ${latestRelease.version} for macOS. Requires a Pro or Pro+ license key to activate. Checksums, release notes, and previous versions included.`,
+  description: `Download ${siteConfig.name} ${latestRelease.version} for macOS. Requires a Pro or Pro+ license key to activate.`,
   alternates: { canonical: "/download" },
 };
 
 export default function DownloadPage() {
-  const previousReleases = releases.filter((r) => !r.latest);
-
   return (
     <>
       <section className="relative overflow-hidden pb-20 pt-16 sm:pt-20">
@@ -29,7 +27,8 @@ export default function DownloadPage() {
               Download <span className="emphasis">{siteConfig.name}</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-              Requires a Pro or Pro+ license to activate — <Link href="/pricing" className="underline hover:text-foreground">get a key here</Link> if you don&apos;t have one yet.
+              Requires a Pro or Pro+ license to activate — <Link href="/pricing" className="underline hover:text-foreground">get a key here</Link>{" "}
+              if you don&apos;t have one yet.
             </p>
             <div className="mt-6 flex justify-center">
               <PlatformBadges />
@@ -77,40 +76,27 @@ export default function DownloadPage() {
 
       <section className="py-16">
         <Container>
-          <SectionHeading
-            eyebrow={`v${latestRelease.version}`}
-            title="Release notes"
-            description="What shipped in the latest version, plus the checksum to verify your download."
-          />
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading
+              align="left"
+              eyebrow={`v${latestRelease.version}`}
+              title="Release notes"
+              description="What shipped in the latest version, plus the checksum to verify your download."
+              className="ml-0 text-left"
+            />
+            <Link
+              href="/changelog"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+            >
+              Full changelog
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
           <div className="mx-auto mt-10 max-w-3xl">
             <ReleaseNotesCard release={latestRelease} showChecksum />
           </div>
         </Container>
       </section>
-
-      {previousReleases.length > 0 ? (
-        <section className="py-16">
-          <Container>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading align="left" title="Previous versions" className="ml-0 text-left" />
-              <Link
-                href="/changelog"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
-              >
-                Full changelog
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-            <StaggerGroup className="mx-auto mt-10 max-w-3xl space-y-4">
-              {previousReleases.map((release) => (
-                <StaggerItem key={release.version}>
-                  <ReleaseNotesCard release={release} showChecksum defaultOpen={false} />
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          </Container>
-        </section>
-      ) : null}
     </>
   );
 }
